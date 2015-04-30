@@ -14,20 +14,32 @@ AndroidDevtf是这个网站的android端，方便大家随时随地方便的浏�
 
 依赖的开源库
 ------- 
-######网络框架Volley 
-
-######图片加载框架 Glide
-
 ######Material-dialogs-master
+Material-Design 风格的对话框
 
 ######support-v7
 V7库的libs里面额外添加了v7-palette.jar和v7-recycleview.jar，方便v7扩展使用
 
 ######supertoasts-library
+一个开源的Toast提示框架
+
+######网络框架 volley.jar
+google 的网络框架
+
+######图片加载框架 glide.jar
+google 的图片加载框架
+
+######butterknife.jar
+
+######gson.jar
+
+######pg-2.0.1.jar
+这个库是采用注解的方式简化android中实现Parcelable接口
+忘记是哪个哥的了，爱哥？7哥？翔哥？啦啦啦啦~~~
 
 ######图标资源
 
-其中第三、四、五个库需要你自己下载并添加依赖，第一、二个库已经集成到了项目中
+其中第一、二、三个库需要你自己下载并添加依赖，其他的库已经集成到了项目中
 
 目前该项目的功能还很单一，后续会增加更多的功能。
 
