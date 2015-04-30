@@ -1,16 +1,11 @@
 package com.devtf_l.app.fragments;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import butterknife.InjectView;
 
 import com.devtf_l.app.R;
 
@@ -20,9 +15,9 @@ import com.devtf_l.app.R;
  * @date 2015-4-27 下午1:09:51
  */
 public class FeedbackFragment extends BaseFragment {
+	@InjectView(R.id.webView)
+	WebView webView;
 	String FEED_BACK_URL = "https://github.com/lijunhuayc/Devtf_APP/issues/new";
-	Context context;
-	WebView wv;
 
 	@Override
 	public int getFragmentLayout() {
@@ -31,19 +26,18 @@ public class FeedbackFragment extends BaseFragment {
 
 	@Override
 	public void init() {
-		WebView wv = (WebView) fragmentRoot.findViewById(R.id.wv);
-		wv.loadUrl("https://www.baidu.com");
-		wv.getSettings().setJavaScriptEnabled(true);
-		wv.clearCache(true);
-		WebSettings webSettings = wv.getSettings();
-		wv.getSettings().setPluginState(PluginState.ON);
+		webView.loadUrl(FEED_BACK_URL);
+		webView.getSettings().setJavaScriptEnabled(true);
+		webView.clearCache(true);
+		WebSettings webSettings = webView.getSettings();
+		webView.getSettings().setPluginState(PluginState.ON);
 		webSettings.setJavaScriptEnabled(true);
 		webSettings.setDomStorageEnabled(true);
-		wv.setWebChromeClient(new WebChromeClient() {
+		webView.setWebChromeClient(new WebChromeClient() {
 			public void onProgressChanged(WebView view, int progress) {
 			}
 		});
-		wv.setWebViewClient(new WebViewClient() {
+		webView.setWebViewClient(new WebViewClient() {
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
 				{
 					view.loadUrl(url);
@@ -56,6 +50,5 @@ public class FeedbackFragment extends BaseFragment {
 	@Override
 	public void initPageViewListener() {
 		// TODO Auto-generated method stub
-		
 	}
 }

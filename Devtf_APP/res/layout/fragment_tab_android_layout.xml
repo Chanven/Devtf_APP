@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FF0000">
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:text="Android Tab"
-        android:layout_centerHorizontal="true"
-        android:background="@color/green_600" />
+    <include layout="@layout/common_recycler_tview_layout" />
 
 </RelativeLayout>

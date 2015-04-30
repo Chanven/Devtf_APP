@@ -29,6 +29,7 @@ import com.devtf_l.app.R;
 import com.devtf_l.app.adapter.ToolbarMenudrawerAdapter;
 import com.devtf_l.app.base.BaseActivity;
 import com.devtf_l.app.entry.Icons;
+import com.devtf_l.app.fragments.AboutFragment;
 import com.devtf_l.app.fragments.BaseFragment;
 import com.devtf_l.app.fragments.ContributeFragment;
 import com.devtf_l.app.fragments.CopyrightFragment;
@@ -56,6 +57,7 @@ public final class ToolbarMenudrawerActivity extends BaseActivity {
 	BaseFragment contributeFragment = new ContributeFragment();
 	BaseFragment feedbackFragment = new FeedbackFragment();
 	BaseFragment copyrightFragment = new CopyrightFragment();
+	BaseFragment aboutFragment = new AboutFragment();
 	FragmentManager mFragmentManager;
 	FragmentTransaction mFTransaction;
 	BaseFragment mCurrent = null;
@@ -199,7 +201,7 @@ public final class ToolbarMenudrawerActivity extends BaseActivity {
 					mFTransaction.hide(mCurrent);
 				}
 				mFTransaction.add(containerViewId, toFragment);
-//				mFTransaction.addToBackStack(null);
+				mFTransaction.addToBackStack(null);
 			}
 			mCurrent = toFragment;
 			hideInputMethod();
@@ -229,13 +231,12 @@ public final class ToolbarMenudrawerActivity extends BaseActivity {
 			case 4:
 				showToast("待扩展");
 				return;
+//				getSupportActionBar().setTitle(ada?pter.getItemTitle(position-1));
+//				switchFragment(aboutFragment);
+//				break;
 			case 5:
-				// Not quite ready yet
-				/*
-				 * Intent about = new Intent(this, About.class);
-				 * startActivity(about);
-				 */
-				Toast.makeText(this, "Coming soon. :)", Toast.LENGTH_LONG).show();
+				getSupportActionBar().setTitle("关于");
+				switchFragment(aboutFragment);
 				break;
 		}
 		mFTransaction.commit();

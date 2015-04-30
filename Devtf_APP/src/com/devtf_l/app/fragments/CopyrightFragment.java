@@ -7,6 +7,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import butterknife.InjectView;
 
 import com.devtf_l.app.R;
 
@@ -16,7 +17,8 @@ import com.devtf_l.app.R;
  * @date 2015-4-29 下午5:02:47
  */
 public class CopyrightFragment extends BaseFragment {
-	WebView wv;
+	@InjectView(R.id.webView)
+	WebView webView;
 	String COPYRIGHT_URL = "http://www.devtf.cn/?page_id=6";
 
 	@Override
@@ -26,21 +28,13 @@ public class CopyrightFragment extends BaseFragment {
 
 	@Override
 	public void init() {
-		WebView wv = (WebView) fragmentRoot.findViewById(R.id.wv);
-		/*
-		 * Use this to make the webview link convert from Mobile to Desktop. ;)
-		 * 
-		 * wv.getSettings().setUserAgentString("Mozilla/5.0 " +
-		 * "(Windows NT 6.2; " + "WOW64) AppleWebKit/537.31 " +
-		 * "(KHTML, like Gecko) Chrome/20 " + "Safari/537.31");
-		 */
-		wv.loadUrl(COPYRIGHT_URL);
-		wv.clearCache(true);
-		WebSettings webSettings = wv.getSettings();
-		wv.getSettings().setPluginState(WebSettings.PluginState.ON);
+		webView.loadUrl(COPYRIGHT_URL);
+		webView.clearCache(true);
+		WebSettings webSettings = webView.getSettings();
+		webView.getSettings().setPluginState(WebSettings.PluginState.ON);
 		webSettings.setJavaScriptEnabled(true);
 		webSettings.setDomStorageEnabled(true);
-		wv.setDownloadListener(new DownloadListener() {
+		webView.setDownloadListener(new DownloadListener() {
 			@Override
 			public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
 				Uri uri = Uri.parse(url);
@@ -48,11 +42,11 @@ public class CopyrightFragment extends BaseFragment {
 				startActivity(intent);
 			}
 		});
-		wv.setWebChromeClient(new WebChromeClient() {
+		webView.setWebChromeClient(new WebChromeClient() {
 			public void onProgressChanged(WebView view, int progress) {
 			}
 		});
-		wv.setWebViewClient(new WebViewClient() {
+		webView.setWebViewClient(new WebViewClient() {
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
 				{
 					view.loadUrl(url);
@@ -60,12 +54,10 @@ public class CopyrightFragment extends BaseFragment {
 				}
 			}
 		});
-		
 	}
 
 	@Override
 	public void initPageViewListener() {
 		// TODO Auto-generated method stub
-		
 	}
 }

@@ -1,5 +1,8 @@
 package com.devtf_l.app.entry;
 
+import com.baoyz.pg.Parcelable;
+
+@Parcelable
 public class RssItem {
 	private String title;//Android Support库 22.1
 	private String link;//http://www.devtf.cn/?p=229

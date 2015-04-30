@@ -7,6 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@color/green_300"
-        android:text="Request页面" />
+        android:text="投稿页面" />
 
 </RelativeLayout>
