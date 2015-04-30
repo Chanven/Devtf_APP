@@ -1,0 +1,46 @@
+<resources>
+
+    <style name="ToolbarMenudrawer.Theme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:colorPrimary">@color/green_800</item>
+        <item name="android:colorPrimaryDark">@color/green_a700</item>
+        <item name="android:colorAccent">@color/green_900</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+        <item name="android:statusBarColor">@color/green_600</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="WhiteTeal.Theme" parent="android:Theme.Material.Light">
+        <item name="colorPrimary">#fafafa</item>
+        <item name="colorPrimaryDark">#f7f7f7</item>
+        <item name="colorAccent">#303f9f</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:actionBarStyle">@style/WhiteTeal.Actionbar.Theme</item>
+        <item name="android:windowBackground">@color/background_material_light</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+    </style>
+
+    <style name="WhiteTeal.Actionbar.Theme" parent="android:Widget.Material.Light.ActionBar">
+        <item name="android:background">@color/green_600</item>
+        <item name="android:titleTextStyle">            @style/WhiteTeal.ActionBar.TitleTextStyle.Theme</item>
+        <item name="android:height">58.0dip</item>
+        <item name="android:icon">@android:color/transparent</item>
+    </style>
+
+    <style name="WhiteTeal.ActionBar.TitleTextStyle.Theme" parent="android:TextAppearance.Material.Widget.ActionBar.Title">
+        <item name="android:textColorHint">@android:color/transparent</item>
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+
+</resources>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#299cea" >
+
+        <ImageView
+            android:id="@+id/backBt"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="3dp"
+            android:src="@drawable/splash_material_button_ripple"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/iconIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/backBt"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_action_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iconIV"
+            android:layout_below="@id/backBt"
+            android:layout_centerHorizontal="true"
+            android:gravity="bottom"
+            android:padding="15dp"
+            android:text="程序异常反馈"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/login_dialog_background"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/checkNameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="3dp" >
+
+            <CheckBox
+                android:id="@+id/checkName"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/checkbox_drawable"
+                android:button="@null"
+                android:checked="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="勾选上传日志信息"
+                android:textColor="#299cea"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reStartBt"
+            android:layout_width="fill_parent"
+            android:layout_height="45.0dip"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dip"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="25dip"
+            android:background="@drawable/splash_material_button_ripple"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="重 启 程 序"
+                android:textColor="#ffffff"
+                android:textSize="22sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_above="@id/login_dialog_background"
+        android:layout_below="@id/headerLayout"
+        android:background="#FFFFFF" >
+
+        <LinearLayout
+            android:id="@+id/login_edit_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="1.5dp" >
+
+            <TextView
+                android:id="@+id/causeInfoTV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

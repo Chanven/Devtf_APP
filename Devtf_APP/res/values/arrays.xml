@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="navigation_main_sections">
+        <item>投稿</item>
+        <item>反馈</item>
+        <item>版权信息</item>
+        <item>联系我们</item>
+    </string-array>
+
+    <array name="navigation_main_sections_drawable_ids">
+        <item>@drawable/request</item>
+        <item>@drawable/bug_report</item>
+        <item>@drawable/web</item>
+        <item>@drawable/in_review</item>
+    </array>
+
+    <string-array name="jazzy_effects">
+        <item>Standard</item>
+        <item>Tablet</item>
+        <item>CubeIn</item>
+        <item>CubeOut</item>
+        <item>FlipVertical</item>
+        <item>FlipHorizontal</item>
+        <item>Stack</item>
+        <item>ZoomIn</item>
+        <item>ZoomOut</item>
+        <item>RotateUp</item>
+        <item>RotateDown</item>
+        <item>Accordion</item>
+    </string-array>
+
+</resources>

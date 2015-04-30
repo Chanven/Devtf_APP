@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="background_material_light">#fffafafa</color>
+
+    <!-- 20% Transparency -->
+    <color name="transparent_black_20">#33000000</color>
+
+    <color name="teal">#ff009688</color>
+    <color name="teal_700">#ff00796b</color>
+    <color name="navbarcolor_request">#FF0a7e07</color>
+    <color name="toolbarcolor_request">#FF0a8f08</color>
+    <color name="statusbarcolor_request_darker">#FF056f00</color>
+    <color name="navbarcolor_report">#FFdb4437</color>
+    <color name="toolbarcolor_report">#FFdb4437</color>
+    <color name="statusbarcolor_report_darker">#FFbd2e22</color>
+    <color name="navbarcolor">#FF303030</color>
+    <color name="toolbarcolor">#FF303f9f</color>
+    <color name="statusbarcolor_darker">#FF1a237e</color>
+    <color name="navigation_drawer_item_text">#FF707070</color>
+    <color name="darker">#FF2B2B2B</color>
+
+    <color name="fragment_background">#FFFAFAFA</color>
+    <color name="green_50">#FFe0f2f1</color>
+    <color name="green_100">#FFb2dfdb</color>
+    <color name="green_200">#FF80cbc4</color>
+    <color name="green_300">#FF4db6ac</color>
+    <color name="green_400">#FF26a69a</color>
+    
+    <color name="green_500">#FF009688</color>
+    <color name="green_600">#FF00897B</color>
+    <color name="green_700">#FF00796B</color>
+    <color name="green_800">#FF00695C</color>
+    <color name="green_900">#FF004D40</color>
+
+    <color name="green_a100">#FFA7FFEB</color>
+    <color name="green_a200">#FF64FFDA</color>
+    <color name="green_a400">#FF1DE9B6</color>
+    <color name="green_a700">#FF00BFA5</color>
+    <color name="green_a701">#FF00b197</color>
+    
+    
+    <color name="day">#ff0277bd</color>
+    <color name="night">#FF2a36b1</color>
+
+    <color name="fab_color_1">#ff5252</color>
+    <color name="fab_color_1_muted">#ff8080</color>
+    <color name="fab_color_2">#9c27b0</color>
+    <color name="fab_color_2_muted">#a56ab0</color>
+
+    <color name="menudrawer_bg_dark">#FF303030</color>
+
+    <color name="translucent_statusbar_background">#cc3f51b5</color>
+
+    <color name="navdrawer_text_color">#2b2b2b</color>
+    <color name="navdrawer_text_color_selected">@color/night</color>
+    <color name="navdrawer_icon_tint">#888</color>
+    <color name="navdrawer_icon_tint_selected">@color/night</color>
+    
+    
+    <!--  -->
+    <color name="pager_sliding_tab_strip_background_press">#00FFFFFF</color>
+    
+</resources>
