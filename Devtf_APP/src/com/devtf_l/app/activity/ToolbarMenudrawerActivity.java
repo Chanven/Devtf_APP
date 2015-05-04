@@ -229,11 +229,12 @@ public final class ToolbarMenudrawerActivity extends BaseActivity {
 				switchFragment(copyrightFragment);
 				break;
 			case 4:
-				showToast("待扩展");
-				return;
+//				showToast("待扩展");
+//				return;
+				startActivity(new Intent(mContext, WebViewAcgtivity.class));
 //				getSupportActionBar().setTitle(ada?pter.getItemTitle(position-1));
 //				switchFragment(aboutFragment);
-//				break;
+				break;
 			case 5:
 				getSupportActionBar().setTitle("关于");
 				switchFragment(aboutFragment);
