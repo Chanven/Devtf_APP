@@ -13,7 +13,7 @@
         android:adjustViewBounds="true"
         android:fitsSystemWindows="false"
         android:scaleType="centerCrop"
-        android:src="@drawable/pyramid"
+        android:src="@drawable/paperscape_two"
         android:tint="#69000000" />
 
     <com.devtf_l.app.views.CircularImageView

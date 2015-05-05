@@ -14,13 +14,26 @@
     <string name="subject">Subject</string>
     <string name="send">Send</string>
     <string name="request">Request</string>
-    <string name="my_email">MBQSniper@hotmail.com</string>
+    <string name="app_email">simplecoder.h@gmail.com</string>
     <string name="feature_request">Feature Request</string>
     <string name="recipient_bold">Recipient:</string>
     <string name="bold_subject">Subject:</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="bug_report">Bug report</string>
     <string name="about">About</string>
-    <string name="placeholder">Coming soon.</string>
+    
+    <string name="contact_us_desc">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;开发技术前线 是依靠开源社区建立起来的网站，如果你英语好、热爱技术，那么我们非常欢迎你的加入！有兴趣的同学可以加入 Android 翻译-校对群 : 399424408 , iOS 翻译-校对群 : 131021281 ，两个群都需审核。你也可以通过邮件 ( dev.tech.frontier@gmail.com ) 联系我们。</string>
+    <string name="contact_join_us_desc">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;开发技术前线 是依靠开源社区建立起来的网站，如果你英语好、热爱技术，那么我们非常欢迎你的加入！有兴趣的同学可以加入 Android 翻译-校对群 : 399424408 , iOS 翻译-校对群 : 131021281 ，两个群都需审核。你也可以通过邮件 ( dev.tech.frontier@gmail.com ) 联系我们。</string>
+    
+    <string name="about_label">开发技术前线（V1.0.0）</string>
+    <string name="copyright">© 2015 - Design by Frenchtastic.eu</string>
+    <string name="about_desc">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;开发技术前线 ( Dev Tech Frontier ) 是一个各个IT领域 ( 前期只有Android和iOS )高质量技术文章、开源库、技术咨询的聚合网站，通过引入最新的优质文章，让我们的技术跟上国际步伐。该网站由Mr.Simple、chaossss、tiny-times、dupengwei创立，并且由Android开发技术前线开源组维护,希望我们做的这些对大家有一点帮助。</string>
+    <string name="about_thanks">感谢以下小伙伴的贡献：\n\nMr.Simple、chaossss、tiny-times、dupengwei、Belial、lijunhuayc</string>
+    
+    
+    
+    
+    
+    
 
 </resources>

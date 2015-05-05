@@ -1,4 +1,9 @@
-package com.devtf_l.app.fragments;
+package com.devtf_l.app.base;
+
+import com.devtf_l.app.fragments.AndroidFragment;
+import com.devtf_l.app.fragments.ContactUsFragment;
+import com.devtf_l.app.fragments.EmployFragment;
+import com.devtf_l.app.fragments.IOSFragment;
 
 import android.os.Bundle;
 

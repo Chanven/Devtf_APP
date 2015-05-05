@@ -21,6 +21,11 @@
     <color name="darker">#FF2B2B2B</color>
 
     <color name="fragment_background">#FFFAFAFA</color>
+    <color name="gray_dark">#FF888888</color>
+    <color name="gray_medium">#FF444444</color>
+    <color name="gray_light">#FFCCCCCC</color>
+    
+    
     <color name="green_50">#FFe0f2f1</color>
     <color name="green_100">#FFb2dfdb</color>
     <color name="green_200">#FF80cbc4</color>

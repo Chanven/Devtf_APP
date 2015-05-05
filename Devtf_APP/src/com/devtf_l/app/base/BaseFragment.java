@@ -1,9 +1,8 @@
-package com.devtf_l.app.fragments;
+package com.devtf_l.app.base;
 
 import butterknife.ButterKnife;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.devtf_l.app.base.BaseActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,6 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * @Desc: fragment 公共基类，[Tips: 采用hide/show来管理fragment的话，周期方法不会重复执行]
+ * @author ljh
+ * @date 2015-5-5 上午11:55:37
+ */
 public abstract class BaseFragment extends Fragment {
 	protected BaseActivity context = null;
 	protected View fragmentRoot = null; // Fragment的根View,获取Fragment中的View需要使用

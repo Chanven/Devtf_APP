@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="id_menu_search" type="id"></item>
+    <item name="id_menu_update" type="id"></item>
+    <item name="id_menu_share" type="id"></item>
+    <item name="id_menu_collect" type="id"></item>
+    
+</resources>

@@ -1,18 +1,14 @@
 package com.devtf_l.app.fragments;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.InjectView;
 
 import com.devtf_l.app.R;
 import com.devtf_l.app.adapter.RecyclerViewAdapter;
+import com.devtf_l.app.base.BaseTabFragment;
 import com.devtf_l.app.entry.RssItem;
 
 /**

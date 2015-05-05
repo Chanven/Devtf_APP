@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-    <include layout="@layout/common_webview_layout" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="3"
+        android:background="@color/green_a700"
+        android:gravity="center"
+        android:orientation="vertical" >
 
-</RelativeLayout>
+        <com.devtf_l.app.views.CircularImageView
+            android:layout_width="96dip"
+            android:layout_height="96dip"
+            android:scaleType="centerInside"
+            android:src="@mipmap/ic_launcher" >
+        </com.devtf_l.app.views.CircularImageView>
+
+        <com.devtf_l.app.views.FontsTextView
+            android:id="@+id/labelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            customfontdemo:fontName="Roboto-Black.ttf" >
+        </com.devtf_l.app.views.FontsTextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:autoLink="all"
+            android:text="http://www.devtf.cn"
+            android:textColor="#FFFFFFFF" />
+    </LinearLayout>
+
+    <com.devtf_l.app.views.FontsTextView
+        android:id="@+id/descFontsTV"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="3"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="16dp"
+        android:textColor="@color/gray_medium"
+        android:textSize="16sp"
+        customfontdemo:fontName="Roboto-Light.ttf" >
+    </com.devtf_l.app.views.FontsTextView>
+
+    <com.devtf_l.app.views.FontsTextView
+        android:id="@+id/thanksFontsTV"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="2"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/gray_medium"
+        android:textSize="16sp"
+        customfontdemo:fontName="Roboto-Light.ttf" >
+    </com.devtf_l.app.views.FontsTextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/copyright"
+        android:textColor="@color/gray_light" >
+    </TextView>
+
+</LinearLayout>

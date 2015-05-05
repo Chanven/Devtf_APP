@@ -1,9 +1,13 @@
 package com.devtf_l.app.base;
 
+import java.lang.reflect.Field;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.ViewConfiguration;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import butterknife.ButterKnife;
 
@@ -89,6 +93,32 @@ public abstract class BaseActivity extends ActionBarActivity {
 		}
 	}
 
+	/**
+	 * @Description: 刷新 option menu
+	 * @author (ljh) @date 2015-5-5 下午2:10:09  
+	 * @return void
+	 */
+	public void refreshOptionsMenu() {
+		getWindow().invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL);
+	}
+	
+	/**
+	 * 设置溢出菜单
+	 * @deprecated
+	 */
+	protected void setOverflowMenu() {
+		try {
+			ViewConfiguration config = ViewConfiguration.get(this);
+			Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+			if (menuKeyField != null) {
+				menuKeyField.setAccessible(true);
+				menuKeyField.setBoolean(config, false);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();

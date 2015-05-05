@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.util.SparseArrayCompat;
 import android.view.ViewGroup;
 
-import com.devtf_l.app.fragments.BaseTabFragment;
+import com.devtf_l.app.base.BaseTabFragment;
 import com.devtf_l.app.views.jazzyviewpager.JazzyViewPager;
 
 /**

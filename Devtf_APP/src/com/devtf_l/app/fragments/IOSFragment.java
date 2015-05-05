@@ -1,6 +1,7 @@
 package com.devtf_l.app.fragments;
 
 import com.devtf_l.app.R;
+import com.devtf_l.app.base.BaseTabFragment;
 
 /**
  * @Desc: IOS文章   tab页

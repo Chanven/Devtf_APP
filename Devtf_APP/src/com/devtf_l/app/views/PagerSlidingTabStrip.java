@@ -197,7 +197,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		tab.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				pager.setCurrentItem(position);
+				pager.setCurrentItem(position, false);//点击tab切换viewpager的时候禁止滚动动画
 			}
 		});
 		tab.setPadding(tabPadding, 0, tabPadding, 0);

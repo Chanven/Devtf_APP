@@ -1,6 +1,9 @@
 package com.devtf_l.app.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
+import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.PluginState;
@@ -17,7 +20,7 @@ import com.devtf_l.app.base.BaseActivity;
  * @desc webview显示的模块均跳转到本处【暂时】
  * @author ljh lijunhuayc@sina.com 2015-5-4
  */
-public class WebViewAcgtivity extends BaseActivity {
+public class WebViewActivity extends BaseActivity {
 	String url = "http://www.baidu.com";
 	@InjectView(R.id.webView)
 	WebView webView;
@@ -41,10 +44,10 @@ public class WebViewAcgtivity extends BaseActivity {
 	protected void init() {
 		String url = getIntent().getStringExtra("url");
 		webView.loadUrl(url);
-		webView.getSettings().setJavaScriptEnabled(true);
 		webView.clearCache(true);
 		WebSettings webSettings = webView.getSettings();
-		webView.getSettings().setPluginState(PluginState.ON);
+		webSettings.setJavaScriptEnabled(true);
+		webSettings.setPluginState(PluginState.ON);
 		webSettings.setJavaScriptEnabled(true);
 		webSettings.setDomStorageEnabled(true);
 		webView.setWebChromeClient(new WebChromeClient() {
@@ -60,7 +63,14 @@ public class WebViewAcgtivity extends BaseActivity {
 			@Override
 			public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
 				super.onReceivedError(view, errorCode, description, failingUrl);
-				
+			}
+		});
+		webView.setDownloadListener(new DownloadListener() {
+			@Override
+			public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+				Uri uri = Uri.parse(url);
+				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+				startActivity(intent);
 			}
 		});
 	}
