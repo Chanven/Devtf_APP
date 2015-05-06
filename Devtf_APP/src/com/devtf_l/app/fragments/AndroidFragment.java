@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import butterknife.InjectView;
 
 import com.devtf_l.app.R;
-import com.devtf_l.app.adapter.RecyclerViewAdapter;
+import com.devtf_l.app.adapter.AndroidRecyclerAdapter;
 import com.devtf_l.app.base.BaseTabFragment;
 import com.devtf_l.app.entry.RssItem;
 
@@ -21,7 +21,7 @@ public class AndroidFragment extends BaseTabFragment{
 	RecyclerView mRecyclerView;
 	LinearLayoutManager linearLayoutManager;
 	ArrayList<RssItem> itemList = new ArrayList<RssItem>();
-	RecyclerViewAdapter rvAdapter;
+	AndroidRecyclerAdapter rvAdapter;
 	
 	@Override
 	public int getFragmentLayout() {
@@ -33,7 +33,7 @@ public class AndroidFragment extends BaseTabFragment{
 		linearLayoutManager = new LinearLayoutManager(context);
 		mRecyclerView.setLayoutManager(linearLayoutManager);
 		mRecyclerView.setHasFixedSize(true);
-		rvAdapter = new RecyclerViewAdapter(itemList);
+		rvAdapter = new AndroidRecyclerAdapter(itemList);
 		mRecyclerView.setAdapter(rvAdapter);
 		getData();
 	}

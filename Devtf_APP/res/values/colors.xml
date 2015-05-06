@@ -26,6 +26,7 @@
     <color name="gray_dark">#FF888888</color>
     <color name="gray_medium">#FF444444</color>
     <color name="gray_light">#FFCCCCCC</color>
+    <color name="gray_recycler_item_bg">#FFFEFEFE</color>
     
     
     <color name="green_50">#FFe0f2f1</color>

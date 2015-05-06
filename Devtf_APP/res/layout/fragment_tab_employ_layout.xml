@@ -3,10 +3,15 @@
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fafafa" >
+    android:background="#FADCDCDC" >
 
-    <include layout="@layout/common_recycler_tview_layout" />
+    <include layout="@layout/common_recycler_view_layout" />
 
-    <ViewStub android:id="@+id/errorViewStub" android:layout="@layout/network_error_layout" />
+    <!-- note3测试出 ViewStub必须使用width和height属性 -->
+    <ViewStub
+        android:id="@+id/errorViewStub"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/network_error_layout" />
 
 </android.support.v4.widget.SwipeRefreshLayout>

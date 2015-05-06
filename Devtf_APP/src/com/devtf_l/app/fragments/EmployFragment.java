@@ -19,13 +19,12 @@ import android.widget.TextView;
 import butterknife.InjectView;
 
 import com.android.volley.Request.Method;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 import com.devtf_l.app.R;
-import com.devtf_l.app.adapter.RecyclerViewAdapter;
+import com.devtf_l.app.adapter.AndroidRecyclerAdapter;
+import com.devtf_l.app.adapter.EmployRecycleAdapter;
 import com.devtf_l.app.base.BaseTabFragment;
 import com.devtf_l.app.entry.EmploymentItem;
 import com.devtf_l.app.net.HtmlInputRequest;
@@ -41,13 +40,13 @@ public class EmployFragment extends BaseTabFragment {
 	SwipeRefreshLayout mSwipeRefreshLayout;
 	@InjectView(R.id.recyclerView)
 	RecyclerView mRecyclerView;
-	@InjectView(R.id.reloadBt)
-	TextView mReloadBt;
 	@InjectView(R.id.errorViewStub)
 	ViewStub mViewStub;
+//	@InjectView(R.id.reloadBt)
+	TextView mReloadBt;//位于ViewStub中的View默认是不展开的，因此没法使用butterknife注解来初始化（bk是编译期注解）
 	LinearLayoutManager linearLayoutManager;
-	RecyclerViewAdapter rvAdapter;
-	ArrayList<EmploymentItem> itemList = new ArrayList<EmploymentItem>();
+	EmployRecycleAdapter rvAdapter;
+	List<EmploymentItem> itemList = new ArrayList<EmploymentItem>();
 
 	@Override
 	public int getFragmentLayout() {
@@ -59,7 +58,7 @@ public class EmployFragment extends BaseTabFragment {
 		linearLayoutManager = new LinearLayoutManager(context);
 		mRecyclerView.setLayoutManager(linearLayoutManager);
 		mRecyclerView.setHasFixedSize(true);
-		rvAdapter = new RecyclerViewAdapter(itemList);
+		rvAdapter = new EmployRecycleAdapter(itemList);
 		mRecyclerView.setAdapter(rvAdapter);
 		getData();
 	}
@@ -67,7 +66,13 @@ public class EmployFragment extends BaseTabFragment {
 	private void getData() {
 		context.getRequestQueue().add(new HtmlInputRequest(Method.GET, WebAPI.EMPLOY_URL, new Listener<List<EmploymentItem>>() {
 			@Override
-			public void onResponse(List<EmploymentItem> response) {
+			public void onResponse(final List<EmploymentItem> response) {
+				context.runOnUiThread(new Runnable() {
+					public void run() {
+						rvAdapter.setItemList(response);
+						rvAdapter.notifyDataSetChanged();
+					}
+				});
 			}
 		}, new ErrorListener() {
 			@Override
@@ -109,4 +114,5 @@ public class EmployFragment extends BaseTabFragment {
 	@Override
 	public void initPageViewListener() {
 	}
+	
 }

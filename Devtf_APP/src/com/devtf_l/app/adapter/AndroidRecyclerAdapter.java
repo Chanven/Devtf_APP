@@ -1,6 +1,6 @@
 package com.devtf_l.app.adapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
@@ -14,8 +14,8 @@ import com.devtf_l.app.R;
  * @author ljh
  * @date 2015-4-30 下午5:23:21
  */
-public class RecyclerViewAdapter extends BaseRecyclerAdapter {
-	public <T> RecyclerViewAdapter(ArrayList<T> itemList) {
+public class AndroidRecyclerAdapter extends BaseRecyclerAdapter {
+	public <T> AndroidRecyclerAdapter(List<T> itemList) {
 		super(itemList);
 	}
 
@@ -25,7 +25,7 @@ public class RecyclerViewAdapter extends BaseRecyclerAdapter {
 
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int position) {
-		View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.common_recycler_view_item, viewGroup, false);
+		View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_android_recycler_item, viewGroup, false);
 		return new RecyclerViewHolder(view);
 	}
 

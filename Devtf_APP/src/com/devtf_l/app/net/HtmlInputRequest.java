@@ -43,9 +43,9 @@ public class HtmlInputRequest extends Request<List<EmploymentItem>> {
 		Document doc;
 		List<EmploymentItem> eiList = new ArrayList<EmploymentItem>();
 		try {
+			doc = Jsoup.parse(htmlIS, "UTF-8", WebAPI.BASE_URL);
 			doc = Jsoup.parse(new URL(WebAPI.EMPLOY_URL), 30000);
 			Elements elements = doc.getElementsByTag("table");
-			Elements els = doc.select("div.bio post-content");
 			for (Element element : elements) {
 				Elements tbody = element.select("tbody").select("tr");
 				for (Element tr : tbody) {

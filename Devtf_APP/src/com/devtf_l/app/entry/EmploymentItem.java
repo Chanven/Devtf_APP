@@ -11,6 +11,7 @@ public class EmploymentItem {
 	private String jobDescAddress; // JD地址
 	private String postTempt; // 一句话职位诱惑
 	private String email; // 邮箱
+	private boolean isRead;	//是否阅读过  后置添加阅读过变灰色需要使用
 
 	public String getCompanyName() {
 		return companyName;

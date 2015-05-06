@@ -1,6 +1,6 @@
 package com.devtf_l.app.adapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -11,13 +11,13 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
  * @date 2015-5-6 下午3:52:18
  */
 public abstract class BaseRecyclerAdapter extends Adapter<ViewHolder> {
-	ArrayList<?> itemList;
+	List<?> itemList;
 
-	public <T> BaseRecyclerAdapter(ArrayList<T> itemList) {
+	public <T> BaseRecyclerAdapter(List<T> itemList) {
 		this.itemList = itemList;
 	}
 
-	public <T> void setItemList(ArrayList<T> itemList) {
+	public <T> void setItemList(List<T> itemList) {
 		if (null == itemList) {
 			this.itemList.clear();
 		} else {

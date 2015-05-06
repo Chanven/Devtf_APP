@@ -8,5 +8,6 @@
     <dimen name="fab_icon_size">24dip</dimen>
     
     <dimen name="padding_content_20dip">20dip</dimen>
+    <dimen name="item_circular_radius">8dip</dimen>
 
 </resources>
