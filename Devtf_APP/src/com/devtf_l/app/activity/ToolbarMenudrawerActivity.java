@@ -27,6 +27,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 import butterknife.InjectView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.devtf_l.app.R;
 import com.devtf_l.app.adapter.ToolbarMenudrawerAdapter;
 import com.devtf_l.app.base.BaseActivity;
@@ -57,7 +59,7 @@ public final class ToolbarMenudrawerActivity extends BaseActivity {
 	FragmentTransaction mFTransaction;
 	BaseFragment mCurrent = null;
 	int containerViewId;
-
+	
 	@Override
 	protected void init() {
 		setSupportActionBar(mToolbar);

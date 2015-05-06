@@ -40,7 +40,7 @@ public class ContactUsFragment extends BaseTabFragment{
 	public void init() {
 		final String emailStr = "邮箱：<font color='#64FFDA'><u>simplecoder.h@gmail.com</u></font>";
 		final String qqStr = "QQ：<font color='#64FFDA'>149419843</font>";
-		final String sinaStr = "新浪微博：<font color='#64FFDA'><u>开发技术前行</u></font>";
+		final String sinaStr = "新浪微博：<font color='#64FFDA'><u>开发技术前线</u></font>";
 		
 		mHandler.postDelayed(new Runnable() {
 			@Override

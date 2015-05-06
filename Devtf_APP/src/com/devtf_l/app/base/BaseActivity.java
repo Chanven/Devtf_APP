@@ -12,6 +12,8 @@ import android.view.inputmethod.InputMethodManager;
 import butterknife.ButterKnife;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.github.johnpersano.supertoasts.SuperToast;
 import com.github.johnpersano.supertoasts.SuperToast.Animations;
 import com.github.johnpersano.supertoasts.SuperToast.Background;
@@ -27,6 +29,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 	protected DevtfApplication mAplication;
 	protected LayoutInflater mInflater;
 	protected MaterialDialog mDialog; // MaterialDialog
+	protected RequestQueue mRequestQueue;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 		mContext = this;
 		mInflater = getLayoutInflater();
 		setContentView(initLayout());
+		mRequestQueue = Volley.newRequestQueue(mContext);
 		ButterKnife.inject(this);
 		init();
 		initListener();
@@ -117,6 +121,10 @@ public abstract class BaseActivity extends ActionBarActivity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public RequestQueue getRequestQueue() {
+		return mRequestQueue;
 	}
 	
 	@Override

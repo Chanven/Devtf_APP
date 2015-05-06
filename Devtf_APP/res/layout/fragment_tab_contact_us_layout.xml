@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.devtf_l.app.views.OverScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fafafa"
-    android:orientation="vertical"
-    android:padding="10dip" >
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dip"
-        android:gravity="center"
-        android:text="加入我们"
-        android:textColor="@color/green_a400"
-        android:textSize="26sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/joinTV"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:textColor="@color/gray_medium" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dip"
-        android:background="@color/gray_light" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dip"
-        android:gravity="center"
-        android:text="联系我们"
-        android:textColor="@color/green_a400"
-        android:textSize="26sp"
-        android:textStyle="bold" />
+    android:paddingLeft="@dimen/padding_content_20dip"
+    android:paddingRight="@dimen/padding_content_20dip" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="加入我们"
+            android:textColor="@color/green_a400"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/joinTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/gray_medium"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:background="@color/gray_light" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dip"
+            android:gravity="center"
+            android:text="联系我们"
+            android:textColor="@color/green_a400"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/emailTV"
             android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:textColor="@color/gray_medium"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/qqTV"
             android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:textColor="@color/gray_medium"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/sinaTV"
             android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:textColor="@color/gray_medium"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
-</LinearLayout>
+</com.devtf_l.app.views.OverScrollView>
