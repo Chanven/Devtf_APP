@@ -41,7 +41,7 @@ public class MainFragment extends BaseFragment {
 				mPagerAdapter = new MainPagerAdapter(mViewPager, getChildFragmentManager(), tabTitles);
 				mViewPager.setAdapter(mPagerAdapter);
 				mViewPager.setOffscreenPageLimit(4);
-				mViewPager.setCurrentItem(2);
+				mViewPager.setCurrentItem(0);
 				mViewPager.setFadeEnabled(true);
 				mViewPager.setTransitionEffect(TransitionEffect.Stack);
 				mViewPager.setSlideCallBack(new SlideCallback() {

@@ -3,6 +3,7 @@ package com.devtf_l.app.base;
 import java.lang.reflect.Field;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -126,6 +127,10 @@ public abstract class BaseActivity extends ActionBarActivity {
 	public RequestQueue getRequestQueue() {
 		return mRequestQueue;
 	}
+	
+    public final Drawable getDrawable2(int id) {
+        return getResources().getDrawable(id);
+    }
 	
 	@Override
 	protected void onDestroy() {

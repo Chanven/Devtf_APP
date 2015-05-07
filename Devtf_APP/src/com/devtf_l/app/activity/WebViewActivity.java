@@ -2,6 +2,8 @@ package com.devtf_l.app.activity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
@@ -22,6 +24,8 @@ import com.devtf_l.app.base.BaseActivity;
  */
 public class WebViewActivity extends BaseActivity {
 	String url = "http://www.baidu.com";
+	@InjectView(R.id.toolbar)
+	Toolbar toolbar;
 	@InjectView(R.id.webView)
 	WebView webView;
 	@InjectView(R.id.backIV)
@@ -42,6 +46,8 @@ public class WebViewActivity extends BaseActivity {
 
 	@Override
 	protected void init() {
+		setSupportActionBar(toolbar);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		String url = getIntent().getStringExtra("url");
 		webView.loadUrl(url);
 		webView.clearCache(true);
@@ -52,6 +58,12 @@ public class WebViewActivity extends BaseActivity {
 		webSettings.setDomStorageEnabled(true);
 		webView.setWebChromeClient(new WebChromeClient() {
 			public void onProgressChanged(WebView view, int progress) {
+			}
+
+			@Override
+			public void onReceivedTitle(WebView view, String title) {
+				super.onReceivedTitle(view, title);
+				getSupportActionBar().setTitle(title);
 			}
 		});
 		webView.setWebViewClient(new WebViewClient() {
@@ -96,5 +108,15 @@ public class WebViewActivity extends BaseActivity {
 				webView.reload();
 				break;
 		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				onBackPressed();
+				break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }
