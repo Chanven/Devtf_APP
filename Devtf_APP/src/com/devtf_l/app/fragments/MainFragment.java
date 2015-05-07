@@ -41,7 +41,7 @@ public class MainFragment extends BaseFragment {
 				mPagerAdapter = new MainPagerAdapter(mViewPager, getChildFragmentManager(), tabTitles);
 				mViewPager.setAdapter(mPagerAdapter);
 				mViewPager.setOffscreenPageLimit(4);
-				mViewPager.setCurrentItem(0);
+				mViewPager.setCurrentItem(2);
 				mViewPager.setFadeEnabled(true);
 				mViewPager.setTransitionEffect(TransitionEffect.Stack);
 				mViewPager.setSlideCallBack(new SlideCallback() {
@@ -51,6 +51,7 @@ public class MainFragment extends BaseFragment {
 						//TODO ...考虑在这里做tab 滑动动效
 					}
 				});
+				mSlidingTabStrip.setShouldExpand(true);
 				mSlidingTabStrip.setViewPager(mViewPager);
 				mSlidingTabStrip.setOnPageChangeListener(new OnPageChangeListener() {
 					@Override

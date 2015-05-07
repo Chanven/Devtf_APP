@@ -1,15 +1,15 @@
 package com.devtf_l.app.base;
 
-import butterknife.ButterKnife;
-
-import com.afollestad.materialdialogs.MaterialDialog;
-
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import butterknife.ButterKnife;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 /**
  * @Desc: fragment 公共基类，[Tips: 采用hide/show来管理fragment的话，周期方法不会重复执行]
@@ -19,8 +19,9 @@ import android.view.ViewGroup;
 public abstract class BaseFragment extends Fragment {
 	protected BaseActivity context = null;
 	protected View fragmentRoot = null; // Fragment的根View,获取Fragment中的View需要使用
-	private String TAG = "BaseFragment-TAG";
+	protected String TAG = "BaseFragment-TAG";
 	protected MaterialDialog mDialog;	//MaterialDialog
+	protected Handler mHandler = new Handler();
 
 	@Override
 	public void onAttach(Activity activity) {
