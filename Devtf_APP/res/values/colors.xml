@@ -20,6 +20,22 @@
     <color name="navigation_drawer_item_text">#FF707070</color>
     <color name="darker">#FF2B2B2B</color>
 
+    <color name="day">#ff0277bd</color>
+    <color name="night">#FF2a36b1</color>
+
+    <color name="fab_color_1">#ff5252</color>
+    <color name="fab_color_1_muted">#ff8080</color>
+    <color name="fab_color_2">#9c27b0</color>
+    <color name="fab_color_2_muted">#a56ab0</color>
+
+    <color name="menudrawer_bg_dark">#FF303030</color>
+    <color name="translucent_statusbar_background">#cc3f51b5</color>
+    <color name="navdrawer_text_color">#2b2b2b</color>
+    <color name="navdrawer_text_color_selected">@color/night</color>
+    <color name="navdrawer_icon_tint">#888</color>
+    <color name="navdrawer_icon_tint_selected">@color/night</color>
+    
+    <!-- ************************************** -->
     <color name="fragment_background">#FFFAFAFA</color>
     <color name="tab_fragment_background">#FFEAEAEA</color>
     <color name="RED_500">#FFe51c23</color>
@@ -27,8 +43,6 @@
     <color name="gray_dark">#FF888888</color>
     <color name="gray_medium">#FF444444</color>
     <color name="gray_light">#FFCCCCCC</color>
-    <color name="gray_recycler_item_bg">@color/light_green_500</color>
-    
     
     <color name="green_50">#FFe0f2f1</color>
     <color name="green_100">#FFb2dfdb</color>
@@ -50,26 +64,17 @@
     <color name="light_green_500">#FF8bc34a</color>
     <color name="light_green_700">#FF689F38</color>
     <color name="light_green_a400">#FF76FF03</color>
-    
-    <color name="day">#ff0277bd</color>
-    <color name="night">#FF2a36b1</color>
-
-    <color name="fab_color_1">#ff5252</color>
-    <color name="fab_color_1_muted">#ff8080</color>
-    <color name="fab_color_2">#9c27b0</color>
-    <color name="fab_color_2_muted">#a56ab0</color>
-
-    <color name="menudrawer_bg_dark">#FF303030</color>
-
-    <color name="translucent_statusbar_background">#cc3f51b5</color>
-
-    <color name="navdrawer_text_color">#2b2b2b</color>
-    <color name="navdrawer_text_color_selected">@color/night</color>
-    <color name="navdrawer_icon_tint">#888</color>
-    <color name="navdrawer_icon_tint_selected">@color/night</color>
-    
-    
-    <!--  -->
     <color name="pager_sliding_tab_strip_background_press">#00FFFFFF</color>
+    
+    <!-- CardView -->
+    <!-- Background color for light CardView. -->
+    <color name="cardview_light_background">#FFFAFAFA</color>
+	<!-- Background color for dark CardView. -->
+	<color name="cardview_dark_background">#FF202020</color>
+    <!-- Shadow color for the first pixels around CardView. -->
+    <color name="cardview_shadow_start_color">#37000000</color>
+    <!-- Shadow color for the furthest pixels around CardView. -->
+    <color name="cardview_shadow_end_color">#03000000</color>
+    
     
 </resources>

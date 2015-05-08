@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true"><shape android:shape="rectangle">
+            <corners android:bottomRightRadius="@dimen/item_circular_radius" android:topRightRadius="@dimen/item_circular_radius" />
+
+            <solid android:color="#EFEFEF" />
+        </shape></item>
+    <item><shape android:shape="rectangle">
+            <corners android:bottomRightRadius="@dimen/item_circular_radius" android:topRightRadius="@dimen/item_circular_radius" />
+
+            <solid android:color="#FFFFFF" />
+        </shape></item>
+
+</selector>

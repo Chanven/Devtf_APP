@@ -36,6 +36,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 //		android.os.Debug.startMethodTracing("Entertainment");
+		mAplication = (DevtfApplication) getApplication();
 		mContext = this;
 		mInflater = getLayoutInflater();
 		setContentView(initLayout());
@@ -43,6 +44,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 		ButterKnife.inject(this);
 		init();
 		initListener();
+		mAplication.addActivity(this);
 	}
 
 	protected abstract int initLayout(); // 布局

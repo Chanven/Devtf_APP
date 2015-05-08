@@ -8,8 +8,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
 import butterknife.InjectView;
@@ -19,11 +21,14 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.devtf_l.app.R;
+import com.devtf_l.app.adapter.BaseRecyclerAdapter.OnItemClickListener;
+import com.devtf_l.app.adapter.BaseRecyclerAdapter.OnItemLongClickListener;
 import com.devtf_l.app.adapter.EmployRecycleAdapter;
 import com.devtf_l.app.base.BaseTabFragment;
 import com.devtf_l.app.entry.EmploymentItem;
 import com.devtf_l.app.net.HtmlDocumentRequest;
 import com.devtf_l.app.net.WebAPI;
+import com.devtf_l.app.util.Timber;
 
 /**
  * @Desc: 招聘 tab页
@@ -53,8 +58,24 @@ public class EmployFragment extends BaseTabFragment {
 		linearLayoutManager = new LinearLayoutManager(context);
 		mRecyclerView.setLayoutManager(linearLayoutManager);
 		mRecyclerView.setHasFixedSize(true);
+		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 		rvAdapter = new EmployRecycleAdapter(itemList);
 		mRecyclerView.setAdapter(rvAdapter);
+		rvAdapter.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(View view, int position) {
+				// TODO item click listener
+				Timber.d("itemClick%s", position);
+			}
+		});
+		rvAdapter.setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(View view, int position) {
+				// TODO item click listener
+				Timber.i("itemClick%s", position);
+				return true;
+			}
+		});
 		getData();
 	}
 
@@ -92,7 +113,7 @@ public class EmployFragment extends BaseTabFragment {
 
 	/**
 	 * @Description: 解析document文档对象到EmploymentItem对象列表
-	 * @author (ljh) @date 2015-5-7 上午11:11:57 
+	 * @author (ljh) @date 2015-5-7 上午11:11:57
 	 * @param doc
 	 * @return List<EmploymentItem>
 	 */
