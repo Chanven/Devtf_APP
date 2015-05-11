@@ -12,7 +12,7 @@
     </style>
 
     <style name="ToolbarMenudrawer.Actionbar.Theme" parent="Widget.AppCompat.Light.ActionBar">
-        <item name="android:background">@color/green_a700</item>
+        <item name="android:background">@color/teal_a700</item>
         <item name="android:titleTextStyle">
             @style/ToolbarMenudrawer.ActionBar.TitleTextStyle.Theme
         </item>

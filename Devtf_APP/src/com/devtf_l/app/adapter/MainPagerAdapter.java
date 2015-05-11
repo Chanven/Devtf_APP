@@ -60,8 +60,8 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
 		}
 		return mFragment;
 	}
-
-	public SparseArrayCompat<BaseTabFragment> getScrollTabHolders() {
+	
+	public SparseArrayCompat<BaseTabFragment> getTabFragmentArray() {
 		return mTabFragmentArray;
 	}
 }

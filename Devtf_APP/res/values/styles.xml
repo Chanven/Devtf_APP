@@ -8,7 +8,7 @@
     </style>
 
     <style name="ToolbarMenudrawer.Actionbar.Theme" parent="Widget.AppCompat.Light.ActionBar">
-        <item name="android:background">@color/green_a700</item>
+        <item name="android:background">@color/teal_a700</item>
         <item name="android:titleTextStyle">@style/ToolbarMenudrawer.ActionBar.TitleTextStyle.Theme</item>
         <item name="android:height">48.0dip</item>
         <item name="android:icon">@android:color/transparent</item>
@@ -41,19 +41,4 @@
         <item name="android:textColor">@android:color/transparent</item>
     </style>
     
-    <!-- CardView style -->
-    <style name="CardView">
-        <item name="cardBackgroundColor">@color/cardview_light_background</item>
-        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
-        <item name="cardElevation">@dimen/cardview_default_elevation</item>
-        <item name="cardMaxElevation">@dimen/cardview_default_elevation</item>
-        <item name="cardUseCompatPadding">false</item>
-        <item name="cardPreventCornerOverlap">true</item>
-    </style>
-    <style name="CardView.Light">
-        <item name="cardBackgroundColor">@color/cardview_light_background</item>
-    </style>
-    <style name="CardView.Dark">
-        <item name="cardBackgroundColor">@color/cardview_dark_background</item>
-    </style>
 </resources>

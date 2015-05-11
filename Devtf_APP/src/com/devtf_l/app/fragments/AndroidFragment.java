@@ -43,7 +43,8 @@ public class AndroidFragment extends BaseTabFragment{
 	 * @author (ljh) @date 2015-4-30 下午5:17:46  
 	 * @return void
 	 */
-	private void getData() {
+	@Override
+	public void getData() {
 		
 	}
 

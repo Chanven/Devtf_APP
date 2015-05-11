@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="background_material_light">#fffafafa</color>
+    <color name="background_material_light1">#fffafafa</color>
 
     <!-- 20% Transparency -->
     <color name="transparent_black_20">#33000000</color>
 
-    <color name="teal">#ff009688</color>
-    <color name="teal_700">#ff00796b</color>
     <color name="navbarcolor_request">#FF0a7e07</color>
     <color name="toolbarcolor_request">#FF0a8f08</color>
     <color name="statusbarcolor_request_darker">#FF056f00</color>
@@ -37,33 +35,50 @@
     
     <!-- ************************************** -->
     <color name="fragment_background">#FFFAFAFA</color>
-    <color name="tab_fragment_background">#FFEAEAEA</color>
+    <color name="tab_fragment_background">#FFFBFBFB</color>
     <color name="RED_500">#FFe51c23</color>
     
     <color name="gray_dark">#FF888888</color>
     <color name="gray_medium">#FF444444</color>
     <color name="gray_light">#FFCCCCCC</color>
     
-    <color name="green_50">#FFe0f2f1</color>
-    <color name="green_100">#FFb2dfdb</color>
-    <color name="green_200">#FF80cbc4</color>
-    <color name="green_300">#FF4db6ac</color>
-    <color name="green_400">#FF26a69a</color>
-    <color name="green_500">#FF009688</color>
-    <color name="green_600">#FF00897B</color>
-    <color name="green_700">#FF00796B</color>
-    <color name="green_800">#FF00695C</color>
-    <color name="green_900">#FF004D40</color>
-    <color name="green_a100">#FFA7FFEB</color>
-    <color name="green_a200">#FF64FFDA</color>
-    <color name="green_a400">#FF1DE9B6</color>
-    <color name="green_a700">#FF00BFA5</color>
-    <color name="green_a701">#FF00b197</color>
+    <color name="teal_50">#FFe0f2f1</color>
+    <color name="teal_100">#FFb2dfdb</color>
+    <color name="teal_200">#FF80cbc4</color>
+    <color name="teal_300">#FF4db6ac</color>
+    <color name="teal_400">#FF26a69a</color>
+    <color name="teal_500">#FF009688</color>
+    <color name="teal_600">#FF00897B</color>
+    <color name="teal_700">#FF00796B</color>
+    <color name="teal_800">#FF00695C</color>
+    <color name="teal_900">#FF004D40</color>
+    <color name="teal_a100">#FFA7FFEB</color>
+    <color name="teal_a200">#FF64FFDA</color>
+    <color name="teal_a400">#FF1DE9B6</color>
+    <color name="teal_a700">#FF00BFA5</color>
+    <color name="teal_a701">#FF00b197</color>
     
     <color name="orange_500">#FFff9800</color>
+    
+    <color name="green_500">#FF259b24</color>
+    <color name="green_700">#FF0a7e07</color>
+    <color name="green_a400">#FF14e715</color>
+    
     <color name="light_green_500">#FF8bc34a</color>
     <color name="light_green_700">#FF689F38</color>
+    <color name="light_green_a200">#FFb2ff59</color>
     <color name="light_green_a400">#FF76FF03</color>
+    
+    <color name="lime_500">#FFcddc39</color>
+    <color name="lime_700">#FFafb42b</color>
+    <color name="lime_a200">#FFeeff41</color>
+    <color name="lime_a400">#FFc6ff00</color>
+    
+    <color name="yellow_500">#FFffeb3b</color>
+    <color name="yellow_700">#FFfbc02d</color>
+    <color name="yellow_a400">#FFffea00</color>
+    
+    
     <color name="pager_sliding_tab_strip_background_press">#00FFFFFF</color>
     
     <!-- CardView -->

@@ -8,7 +8,7 @@
         android:layout_width="5dip"
         android:layout_height="match_parent"
         android:id="@+id/leftTag"
-        android:background="@color/green_a700"
+        android:background="@color/teal_a700"
         />
     
     

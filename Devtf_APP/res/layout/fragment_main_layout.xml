@@ -9,9 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
-        android:background="@color/green_a700"
-        app:pstsDividerColor="#00ffffff"
-        app:pstsTabPaddingLeftRight="18dp"
+        android:background="@color/teal_a700"
+        app:pstsDividerColor="#12ffffff"
+        app:pstsTabPaddingLeftRight="6dip"
         app:pstsTabTextColor="#FFFFFF"
         app:pstsTabTextSize="15sp" />
 

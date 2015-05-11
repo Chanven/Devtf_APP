@@ -24,9 +24,7 @@ public class MainFragment extends BaseFragment {
 	JazzyViewPager mViewPager;
 	private String[] tabTitles = {"Android","iOS","招聘信息","加入我们"};
 	private MainPagerAdapter mPagerAdapter;
-	int currentTab = 0;
 	Handler mHandler = new Handler();
-	
 	
 	@Override
 	public int getFragmentLayout() {
@@ -41,7 +39,7 @@ public class MainFragment extends BaseFragment {
 				mPagerAdapter = new MainPagerAdapter(mViewPager, getChildFragmentManager(), tabTitles);
 				mViewPager.setAdapter(mPagerAdapter);
 				mViewPager.setOffscreenPageLimit(4);
-				mViewPager.setCurrentItem(0);
+				mViewPager.setCurrentItem(2);
 				mViewPager.setFadeEnabled(true);
 				mViewPager.setTransitionEffect(TransitionEffect.Stack);
 				mViewPager.setSlideCallBack(new SlideCallback() {
@@ -51,12 +49,9 @@ public class MainFragment extends BaseFragment {
 						//TODO ...考虑在这里做tab 滑动动效
 					}
 				});
-				mSlidingTabStrip.setShouldExpand(true);
-				mSlidingTabStrip.setViewPager(mViewPager);
 				mSlidingTabStrip.setOnPageChangeListener(new OnPageChangeListener() {
 					@Override
 					public void onPageSelected(int position) {
-						setCurrentTab(position);
 					}
 					@Override
 					public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -65,6 +60,8 @@ public class MainFragment extends BaseFragment {
 					public void onPageScrollStateChanged(int state) {
 					}
 				});
+				mSlidingTabStrip.setShouldExpand(true);
+				mSlidingTabStrip.setViewPager(mViewPager);
 			}
 		}, 150);
 		
@@ -79,9 +76,12 @@ public class MainFragment extends BaseFragment {
 		super.onHiddenChanged(hidden);
 	}
 	
-	public void setCurrentTab(int currentTab) {
-		this.currentTab = currentTab;
-		mViewPager.setCurrentItem(currentTab, false);
+	public JazzyViewPager getViewPager() {
+		return mViewPager;
+	}
+	
+	public void setCurrentPager(int currentPager) {
+		mViewPager.setCurrentItem(currentPager, false);
 	}
 	
 }

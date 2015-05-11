@@ -14,9 +14,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
             android:gravity="center"
             android:text="加入我们"
-            android:textColor="@color/green_a400"
+            android:textColor="@color/teal_a400"
             android:textSize="26sp"
             android:textStyle="bold" />
 
@@ -40,7 +41,7 @@
             android:layout_margin="20dip"
             android:gravity="center"
             android:text="联系我们"
-            android:textColor="@color/green_a400"
+            android:textColor="@color/teal_a400"
             android:textSize="26sp"
             android:textStyle="bold" />
 

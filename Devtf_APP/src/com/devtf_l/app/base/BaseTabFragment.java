@@ -46,4 +46,11 @@ public abstract class BaseTabFragment extends BaseFragment{
 		return position;
 	}
 	
+	/**
+	 * @Description: 获取数据的接口
+	 * @author (ljh) @date 2015-5-11 上午11:21:47  
+	 * @return void
+	 */
+	public abstract void getData();
+	
 }

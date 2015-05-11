@@ -78,5 +78,11 @@ public class ContactUsFragment extends BaseTabFragment{
 		mHandler.removeCallbacksAndMessages(null);
 		super.onDestroy();
 	}
+
+	@Override
+	public void getData() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

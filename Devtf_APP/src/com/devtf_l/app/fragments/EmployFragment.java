@@ -7,7 +7,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +24,7 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.devtf_l.app.R;
+import com.devtf_l.app.activity.WebViewActivity;
 import com.devtf_l.app.adapter.BaseRecyclerAdapter.OnItemClickListener;
 import com.devtf_l.app.adapter.BaseRecyclerAdapter.OnItemLongClickListener;
 import com.devtf_l.app.adapter.EmployRecycleAdapter;
@@ -41,12 +45,13 @@ public class EmployFragment extends BaseTabFragment {
 	@InjectView(R.id.recyclerView)
 	RecyclerView mRecyclerView;
 	@InjectView(R.id.errorViewStub)
-	ViewStub mViewStub;
+	ViewStub mErrorViewStub;
+	View errorView;
 	// @InjectView(R.id.reloadBt)
 	TextView mReloadBt;// 位于ViewStub中的View默认是不展开的，因此没法使用butterknife注解来初始化（bk是编译期注解）
 	LinearLayoutManager linearLayoutManager;
 	EmployRecycleAdapter rvAdapter;
-	List<EmploymentItem> itemList = new ArrayList<EmploymentItem>();
+	List<EmploymentItem> eiList = new ArrayList<EmploymentItem>();
 
 	@Override
 	public int getFragmentLayout() {
@@ -59,13 +64,14 @@ public class EmployFragment extends BaseTabFragment {
 		mRecyclerView.setLayoutManager(linearLayoutManager);
 		mRecyclerView.setHasFixedSize(true);
 		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-		rvAdapter = new EmployRecycleAdapter(itemList);
+		rvAdapter = new EmployRecycleAdapter(eiList);
 		mRecyclerView.setAdapter(rvAdapter);
 		rvAdapter.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(View view, int position) {
-				// TODO item click listener
-				Timber.d("itemClick%s", position);
+				Intent intent = new Intent(context, WebViewActivity.class);
+				intent.putExtra("url", eiList.get(position).getJobDescAddress());
+				startActivity(intent);
 			}
 		});
 		rvAdapter.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -76,14 +82,22 @@ public class EmployFragment extends BaseTabFragment {
 				return true;
 			}
 		});
-		getData();
+		mSwipeRefreshLayout.setColorSchemeResources(R.color.light_green_a200, R.color.lime_a200, R.color.lime_a400, R.color.light_green_a400);
+		mSwipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				getData();
+			}
+		});
+//		mSwipeRefreshLayout.setRefreshing(true);
 	}
-
-	private void getData() {
+	
+	@Override
+	public void getData() {
 		context.getRequestQueue().add(new HtmlDocumentRequest(Method.GET, WebAPI.EMPLOY_URL, new Listener<Document>() {
 			@Override
 			public void onResponse(final Document doc) {
-				final List<EmploymentItem> eiList = parseDocument(doc);
+				eiList = parseDocument(doc);
 				if (null != eiList && eiList.isEmpty()) {
 					mHandler.post(new Runnable() {
 						public void run() {
@@ -96,13 +110,17 @@ public class EmployFragment extends BaseTabFragment {
 					public void run() {
 						rvAdapter.setItemList(eiList);
 						rvAdapter.notifyDataSetChanged();
+						mErrorViewStub.setVisibility(View.GONE);
+						mSwipeRefreshLayout.setRefreshing(false);
 					}
 				});
 			}
 		}, new ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
-				error.printStackTrace();
+				if(null == errorView){
+					errorView = mErrorViewStub.inflate();
+				}
 			}
 		}));
 	}

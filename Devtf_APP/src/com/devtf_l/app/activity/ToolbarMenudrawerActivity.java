@@ -57,7 +57,7 @@ public final class ToolbarMenudrawerActivity extends BaseActivity {
 	FragmentTransaction mFTransaction;
 	BaseFragment mCurrent = null;
 	int containerViewId;
-	
+
 	@Override
 	protected void init() {
 		setSupportActionBar(mToolbar);
@@ -214,10 +214,15 @@ public final class ToolbarMenudrawerActivity extends BaseActivity {
 
 	@Override
 	public void onBackPressed() {
-		if (mFragmentManager.getBackStackEntryCount() != 0 && mCurrent != mainFragment) {
-			selectItem(0);// 返回键切换到 MainFragment
-		} else if (mDrawerLayout.isDrawerVisible(Gravity.START)) {
+		if (mDrawerLayout.isDrawerVisible(Gravity.START)) {
 			mDrawerLayout.closeDrawer(Gravity.START);
+			return;
+		} else if (mFragmentManager.getBackStackEntryCount() != 0 ) {
+			if(mCurrent != mainFragment)
+				selectItem(0);// 返回键切换到 MainFragment
+			else
+				((MainFragment)mainFragment).setCurrentPager(0);
+			return;
 		} else {
 			if ((System.currentTimeMillis() - exitTime) > 2000) {
 				showToast("再点一次返回桌面");
@@ -256,7 +261,8 @@ public final class ToolbarMenudrawerActivity extends BaseActivity {
 
 	private void selectItem(int position) {
 		mFTransaction = mFragmentManager.beginTransaction();
-		// .setCustomAnimations(enter, exit, popEnter, popExit); //添加fragment动画 material design
+		// .setCustomAnimations(enter, exit, popEnter, popExit); //添加fragment动画
+		// material design
 		Intent intent = new Intent(mContext, WebViewActivity.class);
 		switch (position) {
 			case 0:
@@ -280,7 +286,7 @@ public final class ToolbarMenudrawerActivity extends BaseActivity {
 					getSupportActionBar().setTitle(R.string.app_name);
 					switchFragment(mainFragment);
 				}
-				((MainFragment) mainFragment).setCurrentTab(3);
+				((MainFragment) mainFragment).setCurrentPager(3);
 				break;
 			case 5:
 				getSupportActionBar().setTitle("关于");
