@@ -8,7 +8,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -33,6 +32,7 @@ import com.devtf_l.app.entry.EmploymentItem;
 import com.devtf_l.app.net.HtmlDocumentRequest;
 import com.devtf_l.app.net.WebAPI;
 import com.devtf_l.app.util.Timber;
+import com.github.johnpersano.supertoasts.SuperToast.Duration;
 
 /**
  * @Desc: 招聘 tab页
@@ -47,8 +47,6 @@ public class EmployFragment extends BaseTabFragment {
 	@InjectView(R.id.errorViewStub)
 	ViewStub mErrorViewStub;
 	View errorView;
-	// @InjectView(R.id.reloadBt)
-	TextView mReloadBt;// 位于ViewStub中的View默认是不展开的，因此没法使用butterknife注解来初始化（bk是编译期注解）
 	LinearLayoutManager linearLayoutManager;
 	EmployRecycleAdapter rvAdapter;
 	List<EmploymentItem> eiList = new ArrayList<EmploymentItem>();
@@ -77,7 +75,6 @@ public class EmployFragment extends BaseTabFragment {
 		rvAdapter.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(View view, int position) {
-				// TODO item click listener
 				Timber.i("itemClick%s", position);
 				return true;
 			}
@@ -89,9 +86,8 @@ public class EmployFragment extends BaseTabFragment {
 				getData();
 			}
 		});
-//		mSwipeRefreshLayout.setRefreshing(true);
 	}
-	
+
 	@Override
 	public void getData() {
 		context.getRequestQueue().add(new HtmlDocumentRequest(Method.GET, WebAPI.EMPLOY_URL, new Listener<Document>() {
@@ -118,9 +114,13 @@ public class EmployFragment extends BaseTabFragment {
 		}, new ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
-				if(null == errorView){
-					errorView = mErrorViewStub.inflate();
-				}
+				if (eiList.isEmpty())
+					if (null == errorView) 
+						errorView = mErrorViewStub.inflate();
+					else
+						mErrorViewStub.setVisibility(View.VISIBLE);
+				mSwipeRefreshLayout.setRefreshing(false);
+				context.showToast("加载失败", Duration.VERY_SHORT);
 			}
 		}));
 	}
@@ -136,7 +136,7 @@ public class EmployFragment extends BaseTabFragment {
 	 * @return List<EmploymentItem>
 	 */
 	private List<EmploymentItem> parseDocument(Document doc) {
-		List<EmploymentItem> eiList = new ArrayList<EmploymentItem>();
+		List<EmploymentItem> itemList = new ArrayList<EmploymentItem>();
 		try {
 			Elements trs = doc.getElementsByTag("table").get(0).select("tbody").select("tr");
 			for (Element tr : trs) {
@@ -148,12 +148,12 @@ public class EmployFragment extends BaseTabFragment {
 				eItem.setJobDescAddress(td.attr("href"));
 				eItem.setPostTempt(tds.get(2).text());
 				eItem.setEmail(tds.get(3).text());
-				eiList.add(eItem);
+				itemList.add(eItem);
 			}
 		} catch (Exception e) {
 			// Html页面结构变化可能导致解析NullPointException，这里catch一下不做处理
 			// TODO ...后期可以考虑添加日志记录，在收集异常日志的时候可以及时发现并修正错误
 		}
-		return eiList;
+		return itemList;
 	}
 }

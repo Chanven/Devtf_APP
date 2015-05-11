@@ -214,16 +214,13 @@ public final class ToolbarMenudrawerActivity extends BaseActivity {
 
 	@Override
 	public void onBackPressed() {
-		if (mDrawerLayout.isDrawerVisible(Gravity.START)) {
+		if (mDrawerLayout.isDrawerVisible(Gravity.START))
 			mDrawerLayout.closeDrawer(Gravity.START);
-			return;
-		} else if (mFragmentManager.getBackStackEntryCount() != 0 ) {
-			if(mCurrent != mainFragment)
-				selectItem(0);// 返回键切换到 MainFragment
-			else
-				((MainFragment)mainFragment).setCurrentPager(0);
-			return;
-		} else {
+		else if (mCurrent != mainFragment)
+			selectItem(0);// 返回键切换到 MainFragment
+		else if (mCurrent == mainFragment && ((MainFragment) mainFragment).getCurrentPager() != 0)
+			((MainFragment) mainFragment).setCurrentPager(0);
+		else {
 			if ((System.currentTimeMillis() - exitTime) > 2000) {
 				showToast("再点一次返回桌面");
 				exitTime = System.currentTimeMillis();

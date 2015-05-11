@@ -3,24 +3,25 @@
     android:id="@+id/networkErrorLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical" >
 
     <TextView
+        android:layout_marginTop="100dip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="网 络 错 误"
-        android:textColor="@color/RED_500"
-        android:textSize="30sp" />
+        android:textColor="@color/red_500"
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/reloadBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
-        android:background="@drawable/button_round"
-        android:text="重新加载"
+        android:padding="8dip"
+        android:text="下拉重新加载"
         android:textColor="@color/gray_medium"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
 
 </LinearLayout>

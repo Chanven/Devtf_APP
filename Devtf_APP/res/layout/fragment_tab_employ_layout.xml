@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/swipeRefreshLayout"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/tab_fragment_background" >
+    android:layout_height="match_parent" >
 
-    <FrameLayout
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@color/tab_fragment_background" >
 
         <include layout="@layout/common_recycler_view_layout" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-        <!-- note3测试出 ViewStub必须使用width和height属性 -->
+    <!-- note3测试出 ViewStub必须使用width和height属性 -->
+    <ViewStub
+        android:id="@+id/errorViewStub"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/network_error_layout" />
 
-        <ViewStub
-            android:id="@+id/errorViewStub"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout="@layout/network_error_layout" />
-    </FrameLayout>
-
-</android.support.v4.widget.SwipeRefreshLayout>
+</FrameLayout>

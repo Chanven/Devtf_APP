@@ -84,4 +84,8 @@ public class MainFragment extends BaseFragment {
 		mViewPager.setCurrentItem(currentPager, false);
 	}
 	
+	public int getCurrentPager() {
+		return mViewPager.getCurrentItem();
+	}
+	
 }

@@ -36,7 +36,7 @@
     <!-- ************************************** -->
     <color name="fragment_background">#FFFAFAFA</color>
     <color name="tab_fragment_background">#FFFBFBFB</color>
-    <color name="RED_500">#FFe51c23</color>
+    <color name="red_500">#FFe51c23</color>
     
     <color name="gray_dark">#FF888888</color>
     <color name="gray_medium">#FF444444</color>

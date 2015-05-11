@@ -8,7 +8,6 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
-import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
@@ -16,6 +15,12 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+/**
+ * @desc xml2Bean
+ * @author ljh
+ * lijunhuayc@sina.com 2015-5-11 @param <T>
+ * @deprecated 废弃
+ */
 public class XmlRequest<T> extends Request<T> {
 	private final Gson gson = new Gson();
 	private final Class<T> clazz;
