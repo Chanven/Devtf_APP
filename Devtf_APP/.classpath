@@ -10,6 +10,5 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/android-support-v7-cardview.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
