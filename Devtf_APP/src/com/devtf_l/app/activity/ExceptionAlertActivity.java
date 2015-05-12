@@ -1,8 +1,5 @@
 package com.devtf_l.app.activity;
 
-import org.apache.http.HttpRequest;
-import org.json.JSONObject;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -31,13 +28,23 @@ public class ExceptionAlertActivity extends BaseActivity {
 	}
 
 	@Override
-	public void initListener() {
+	protected void init() {
 		causeInfo = getIntent().getStringExtra("causeInfo");
 		causeInfoTV.setText(causeInfo);
 		pd = new ProgressDialog(mContext);
 	}
 
-	@OnClick({R.id.checkNameLayout, R.id.reStartBt,R.id.backBt})
+	@Override
+	public void initListener() {
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		init();
+	}
+
+	@OnClick({R.id.checkNameLayout, R.id.reStartBt, R.id.backBt})
 	public void allClick(View view) {
 		switch (view.getId()) {
 			case R.id.checkNameLayout:
@@ -68,24 +75,25 @@ public class ExceptionAlertActivity extends BaseActivity {
 		new Thread() {
 			public void run() {
 				try {
-//					String urlStr = WebAPI.UpdateCauseLog_URL + "?dto=";// 日志上传接口
-//					String joStr = HttpRequest.getResponse(urlStr);
-//					JSONObject jo = new JSONObject(joStr);
-//					if ("1".equals(jo.getString("Status"))) {
-//						pd.cancel();
-//						showToast("日志上传成功");
-//						reStartApp();
-//					} else {
-//						throw new Exception();
-//					}
+					// String urlStr = WebAPI.UpdateCauseLog_URL + "?dto=";//
+					// 日志上传接口
+					// String joStr = HttpRequest.getResponse(urlStr);
+					// JSONObject jo = new JSONObject(joStr);
+					// if ("1".equals(jo.getString("Status"))) {
+					// pd.cancel();
+					// showToast("日志上传成功");
+					// reStartApp();
+					// } else {
+					// throw new Exception();
+					// }
 				} catch (Exception e) {
-//					mHandler.post(new Runnable() {
-//						@Override
-//						public void run() {
-//							pd.cancel();
-//							showToast("日志上传失败");
-//						}
-//					});
+					// mHandler.post(new Runnable() {
+					// @Override
+					// public void run() {
+					// pd.cancel();
+					// showToast("日志上传失败");
+					// }
+					// });
 				}
 			};
 		}.start();
@@ -98,14 +106,8 @@ public class ExceptionAlertActivity extends BaseActivity {
 	 */
 	private void reStartApp() {
 		mAplication.finishAll();
-//		startActivity(new Intent(mContext, MainHomeActivity.class));
-//		overridePendingTransition(R.anim.bottom_bar_in, R.anim.bottom_bar_in);
-		finish();
-	}
-
-	@Override
-	protected void init() {
-		// TODO Auto-generated method stub
-		
+		Intent intent = new Intent(mContext, ToolbarMenudrawerActivity.class);
+		startActivity(intent);
+		overridePendingTransition(R.anim.bottom_bar_in, R.anim.bottom_bar_in);
 	}
 }

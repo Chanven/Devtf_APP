@@ -33,6 +33,7 @@
         <activity
             android:name=".activity.ToolbarMenudrawerActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:theme="@style/ToolbarMenudrawer.Theme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,10 +48,16 @@
         </activity>
         <activity
             android:name=".activity.WebViewActivity"
-            android:label="@string/blank_text" >
+            android:label="@string/blank_text"
+            android:launchMode="singleTop" >
         </activity>
         <activity
             android:name=".activity.EmailSendActivity"
+            android:label="@string/blank_text"
+            android:launchMode="singleTop" >
+        </activity>
+        <activity
+            android:name=".activity.ExceptionAlertActivity"
             android:label="@string/blank_text" >
         </activity>
     </application>

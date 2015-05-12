@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.res.Configuration;
 
+import com.devtf_l.app.activity.ExceptionAlertActivity;
+import com.devtf_l.app.activity.ToolbarMenudrawerActivity;
 import com.devtf_l.app.crash.DevtfUncaughtExceptionHandler;
 import com.devtf_l.app.util.Timber;
 
@@ -27,7 +29,14 @@ public class DevtfApplication extends Application {
 
 	public void addActivity(BaseActivity mBaseActivity) {
 		synchronized (acList) {
+			//控制主界面在栈底，新建主界面activity并添加进acList之前须clear列表
+			if(mBaseActivity.getClass() == ToolbarMenudrawerActivity.class){
+				finishAll();
+			}
+			if(mBaseActivity.getClass() == ExceptionAlertActivity.class)
+				return;	//异常处理界面采用singleInstance 模式，不做管理
 			acList.add(mBaseActivity);
+			Timber.i("当前activity数量：%s", acList.size());
 		}
 	}
 

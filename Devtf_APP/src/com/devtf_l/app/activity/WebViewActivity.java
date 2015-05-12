@@ -106,7 +106,8 @@ public class WebViewActivity extends BaseActivity {
 				break;
 			case R.id.refreshIV:
 				webView.reload();
-				break;
+				throw new RuntimeException("异常测试");
+//				break;
 		}
 	}
 

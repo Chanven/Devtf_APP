@@ -137,6 +137,7 @@ public abstract class BaseActivity extends ActionBarActivity {
 	@Override
 	protected void onDestroy() {
 		mRequestQueue.cancelAll(null);
+		mAplication.removeActivity(this);
 		super.onDestroy();
 //		android.os.Debug.stopMethodTracing();
 	}

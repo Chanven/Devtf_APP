@@ -15,7 +15,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
+import android.os.Looper;
 
+import com.devtf_l.app.BuildConfig;
 import com.devtf_l.app.activity.ExceptionAlertActivity;
 
 /**
@@ -54,8 +56,10 @@ public class DevtfUncaughtExceptionHandler implements UncaughtExceptionHandler {
 
 	@Override
 	public void uncaughtException(Thread thread, Throwable ex) {
+		if(BuildConfig.DEBUG)
+			ex.printStackTrace();
 		// 未处理则让系统默认处理
-		if (!hadnleException(ex) && null != defaultExceptionHandler) {
+		if (!handleException(ex) && null != defaultExceptionHandler) {
 			defaultExceptionHandler.uncaughtException(thread, ex);
 		} else {
 			Intent intent = new Intent(mContext, ExceptionAlertActivity.class);
@@ -63,7 +67,7 @@ public class DevtfUncaughtExceptionHandler implements UncaughtExceptionHandler {
 			intent.putExtra("causeInfo", strBuffer.toString());
 			mContext.startActivity(intent);
 			android.os.Process.killProcess(android.os.Process.myPid());
-			System.exit(1);// 非0表示非正常退出
+			System.exit(0);// 非0表示非正常退出
 		}
 	}
 
@@ -73,13 +77,13 @@ public class DevtfUncaughtExceptionHandler implements UncaughtExceptionHandler {
 	 * @param ex
 	 * @return boolean false表示未处理异常
 	 */
-	private boolean hadnleException(Throwable ex) {
+	private boolean handleException(Throwable ex) {
 		if (null == ex)
-			return true;
+			return false;
 //		mContext.getContentResolver().delete(ProviderConstants.RequestColumns.PROVIDER_Uri_REQUEST, "", null);
 //		mContext.getContentResolver().delete(ProviderConstants.ResultColumns.PROVIDER_Uri_RESULT, "", null);
-		collectDeviceInfo();
-		String filePath = saveCrashInfo2File(ex);
+//		collectDeviceInfo();
+//		String filePath = saveCrashInfo2File(ex);
 		// TODO ...文件上传在哪里
 		return true;
 	}
