@@ -1,10 +1,14 @@
 package com.devtf_l.app.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewStub;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -23,11 +27,13 @@ import com.devtf_l.app.base.BaseActivity;
  * @author ljh lijunhuayc@sina.com 2015-5-4
  */
 public class WebViewActivity extends BaseActivity {
-	String url = "http://www.baidu.com";
+	String url = "http://www.devtf.cn";
 	@InjectView(R.id.toolbar)
 	Toolbar toolbar;
 	@InjectView(R.id.webView)
 	WebView webView;
+	@InjectView(R.id.loadingIV)
+	ImageView loadingIV;
 	@InjectView(R.id.backIV)
 	ImageView backIV;
 	@InjectView(R.id.forwardIV)
@@ -38,6 +44,8 @@ public class WebViewActivity extends BaseActivity {
 	ImageView favoriteIV;
 	@InjectView(R.id.refreshIV)
 	ImageView refreshIV;
+	AnimationDrawable ad;
+	Handler mHandler = new Handler();
 
 	@Override
 	protected int initLayout() {
@@ -48,7 +56,16 @@ public class WebViewActivity extends BaseActivity {
 	protected void init() {
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setHomeButtonEnabled(true);
-		String url = getIntent().getStringExtra("url");
+		url = getIntent().getStringExtra("url");
+		mHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				loadWeb();
+			}
+		}, 100);
+	}
+
+	private void loadWeb() {
 		webView.loadUrl(url);
 		webView.clearCache(true);
 		WebSettings webSettings = webView.getSettings();
@@ -72,6 +89,24 @@ public class WebViewActivity extends BaseActivity {
 				return true;
 			}
 
+			@Override
+			public void onPageStarted(WebView view, String url, Bitmap favicon) {
+				super.onPageStarted(view, url, favicon);
+				loadingIV.setVisibility(View.VISIBLE);
+				if(null == ad)
+					ad = (AnimationDrawable) loadingIV.getBackground();
+				ad.start();
+			}
+			
+			@Override
+			public void onPageFinished(WebView view, String url) {
+				super.onPageFinished(view, url);
+				if(null != ad){
+					ad.stop();
+				}
+				loadingIV.setVisibility(View.GONE);
+			}
+			
 			@Override
 			public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
 				super.onReceivedError(view, errorCode, description, failingUrl);
@@ -106,8 +141,7 @@ public class WebViewActivity extends BaseActivity {
 				break;
 			case R.id.refreshIV:
 				webView.reload();
-				throw new RuntimeException("异常测试");
-//				break;
+				break;
 		}
 	}
 

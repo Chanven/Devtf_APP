@@ -22,33 +22,42 @@
         android:fadeScrollbars="false"
         android:fadingEdge="none"
         android:overScrollMode="never" />
+    
+    <ImageView
+        android:id="@+id/loadingIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@anim/loading_anim_gray" />
 
     <LinearLayout
         android:id="@+id/menuBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#EFFAFAFA"
         android:layout_alignParentBottom="true"
+        android:background="#EFFAFAFA"
         android:orientation="horizontal" >
 
         <ImageView
             android:id="@+id/backIV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@drawable/back_iv_48dp_normal"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:src="@drawable/back_iv_48dp_normal" />
 
         <ImageView
             android:id="@+id/forwardIV"
             android:layout_width="0dp"
-            android:src="@drawable/back_iv_48dp_press"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:src="@drawable/back_iv_48dp_press" />
+
         <ImageView
             android:id="@+id/browserIV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
+
         <ImageView
             android:id="@+id/favoriteIV"
             android:layout_width="0dp"
@@ -60,7 +69,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
-
     </LinearLayout>
 
 </RelativeLayout>
