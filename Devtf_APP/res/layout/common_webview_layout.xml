@@ -22,7 +22,7 @@
         android:fadeScrollbars="false"
         android:fadingEdge="none"
         android:overScrollMode="never" />
-    
+
     <ImageView
         android:id="@+id/loadingIV"
         android:layout_width="wrap_content"
@@ -43,32 +43,37 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/back_iv_48dp_normal" />
+            android:scaleType="centerInside"
+            android:src="@drawable/back_iv_48dp_drawable" />
 
         <ImageView
             android:id="@+id/forwardIV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/back_iv_48dp_press" />
+            android:scaleType="centerInside"
+            android:src="@drawable/forward_iv_36dp_drawable" />
 
         <ImageView
             android:id="@+id/browserIV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="centerInside" />
 
         <ImageView
             android:id="@+id/favoriteIV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="centerInside" />
 
         <ImageView
             android:id="@+id/refreshIV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="centerInside" />
     </LinearLayout>
 
 </RelativeLayout>
