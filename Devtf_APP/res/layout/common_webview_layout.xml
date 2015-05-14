@@ -14,7 +14,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-    <WebView
+    <com.devtf_l.app.views.ScrollerWebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentBottom="true"
-        android:background="#EFFAFAFA"
+        android:background="#EFEAEAEA"
         android:orientation="horizontal" >
 
         <ImageView
@@ -44,7 +44,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="centerInside"
-            android:src="@drawable/back_iv_48dp_drawable" />
+            android:src="@drawable/browser_ic_back_36dp_drawable" />
 
         <ImageView
             android:id="@+id/forwardIV"
@@ -52,28 +52,31 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="centerInside"
-            android:src="@drawable/forward_iv_36dp_drawable" />
+            android:src="@drawable/browser_ic_forward_36dp_drawable" />
 
         <ImageView
-            android:id="@+id/browserIV"
+            android:id="@+id/invokeIV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside" />
+            android:scaleType="centerInside"
+            android:src="@drawable/browser_ic_invoke_36dp_drawable" />
 
         <ImageView
             android:id="@+id/favoriteIV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside" />
+            android:scaleType="centerInside"
+            android:src="@drawable/browser_ic_favorites_36dp_drawable" />
 
         <ImageView
             android:id="@+id/refreshIV"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerInside" />
+            android:scaleType="centerInside"
+            android:src="@drawable/browser_ic_refresh_36dp_drawable" />
     </LinearLayout>
 
 </RelativeLayout>

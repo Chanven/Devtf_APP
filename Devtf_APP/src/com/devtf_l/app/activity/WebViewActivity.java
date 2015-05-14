@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewStub;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -21,6 +20,8 @@ import butterknife.OnClick;
 
 import com.devtf_l.app.R;
 import com.devtf_l.app.base.BaseActivity;
+import com.devtf_l.app.views.ScrollerWebView;
+import com.devtf_l.app.views.ScrollerWebView.OnScrollListener;
 
 /**
  * @desc webview显示的模块均跳转到本处【暂时】
@@ -31,15 +32,15 @@ public class WebViewActivity extends BaseActivity {
 	@InjectView(R.id.toolbar)
 	Toolbar toolbar;
 	@InjectView(R.id.webView)
-	WebView webView;
+	ScrollerWebView mVebView;
 	@InjectView(R.id.loadingIV)
 	ImageView loadingIV;
 	@InjectView(R.id.backIV)
 	ImageView backIV;
 	@InjectView(R.id.forwardIV)
 	ImageView forwardIV;
-	@InjectView(R.id.browserIV)
-	ImageView browserIV;
+	@InjectView(R.id.invokeIV)
+	ImageView invokeIV;
 	@InjectView(R.id.favoriteIV)
 	ImageView favoriteIV;
 	@InjectView(R.id.refreshIV)
@@ -66,14 +67,14 @@ public class WebViewActivity extends BaseActivity {
 	}
 
 	private void loadWeb() {
-		webView.loadUrl(url);
-		webView.clearCache(true);
-		WebSettings webSettings = webView.getSettings();
+		mVebView.loadUrl(url);
+		mVebView.clearCache(true);
+		WebSettings webSettings = mVebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
 		webSettings.setPluginState(PluginState.ON);
 		webSettings.setJavaScriptEnabled(true);
 		webSettings.setDomStorageEnabled(true);
-		webView.setWebChromeClient(new WebChromeClient() {
+		mVebView.setWebChromeClient(new WebChromeClient() {
 			public void onProgressChanged(WebView view, int progress) {
 			}
 
@@ -83,7 +84,7 @@ public class WebViewActivity extends BaseActivity {
 				getSupportActionBar().setTitle(title);
 			}
 		});
-		webView.setWebViewClient(new WebViewClient() {
+		mVebView.setWebViewClient(new WebViewClient() {
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
 				view.loadUrl(url);
 				return true;
@@ -96,11 +97,13 @@ public class WebViewActivity extends BaseActivity {
 				if(null == ad)
 					ad = (AnimationDrawable) loadingIV.getBackground();
 				ad.start();
+				setMenuEnable();
 			}
 			
 			@Override
 			public void onPageFinished(WebView view, String url) {
 				super.onPageFinished(view, url);
+				setMenuEnable();
 				if(null != ad){
 					ad.stop();
 				}
@@ -112,7 +115,7 @@ public class WebViewActivity extends BaseActivity {
 				super.onReceivedError(view, errorCode, description, failingUrl);
 			}
 		});
-		webView.setDownloadListener(new DownloadListener() {
+		mVebView.setDownloadListener(new DownloadListener() {
 			@Override
 			public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
 				Uri uri = Uri.parse(url);
@@ -120,27 +123,51 @@ public class WebViewActivity extends BaseActivity {
 				startActivity(intent);
 			}
 		});
+		mVebView.setOnScrollListener(new OnScrollListener() {
+			@Override
+			public void onScroll(int l, int t) {
+				
+			}
+		});
+	}
+	
+	private void setMenuEnable() {
+		if(mVebView.canGoBack()){
+			backIV.setEnabled(true);
+		}else{
+			backIV.setEnabled(false);
+		}
+		if(mVebView.canGoForward()){
+			forwardIV.setEnabled(true);
+		}else{
+			forwardIV.setEnabled(false);
+		}
 	}
 
 	@Override
 	protected void initListener() {
 	}
 
-	@OnClick({R.id.backIV, R.id.forwardIV, R.id.refreshIV, R.id.browserIV})
+	@OnClick({R.id.backIV, R.id.forwardIV, R.id.refreshIV, R.id.invokeIV, R.id.favoriteIV})
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.backIV:
-				webView.goBack();
+				if(mVebView.canGoBack()){
+					mVebView.goBack();
+				}else{
+					onBackPressed();
+				}
 				break;
 			case R.id.forwardIV:
-				webView.goForward();
+				mVebView.goForward();
 				break;
-			case R.id.browserIV:
+			case R.id.invokeIV:
 				break;
 			case R.id.favoriteIV:
+				//收藏逻辑
 				break;
 			case R.id.refreshIV:
-				webView.reload();
+				mVebView.reload();
 				break;
 		}
 	}
@@ -154,4 +181,14 @@ public class WebViewActivity extends BaseActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	@Override
+	public void onBackPressed() {
+		if(mVebView.canGoBack()){
+			backIV.performClick();
+		}else{
+			super.onBackPressed();
+		}
+	}
+	
 }
