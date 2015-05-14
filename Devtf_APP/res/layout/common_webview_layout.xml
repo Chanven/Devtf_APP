@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentBottom="true"
-        android:background="#EFEAEAEA"
+        android:background="#EFF5F5F5"
         android:orientation="horizontal" >
 
         <ImageView
