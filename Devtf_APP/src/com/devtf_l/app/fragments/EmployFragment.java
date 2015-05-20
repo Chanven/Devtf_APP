@@ -15,7 +15,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewStub;
-import android.widget.TextView;
 import butterknife.InjectView;
 
 import com.android.volley.Request.Method;
@@ -79,13 +78,20 @@ public class EmployFragment extends BaseTabFragment {
 				return true;
 			}
 		});
-		mSwipeRefreshLayout.setColorSchemeResources(R.color.light_green_a200, R.color.lime_a200, R.color.lime_a400, R.color.light_green_a400);
+		mSwipeRefreshLayout.setColorSchemeResources(ColorSchemeArr[0], ColorSchemeArr[1], ColorSchemeArr[2]);
 		mSwipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void onRefresh() {
 				getData();
 			}
 		});
+		mHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				mSwipeRefreshLayout.setRefreshing(true);
+				getData();
+			}
+		}, 1200);
 	}
 
 	@Override
@@ -93,14 +99,14 @@ public class EmployFragment extends BaseTabFragment {
 		context.getRequestQueue().add(new HtmlDocumentRequest(Method.GET, WebAPI.EMPLOY_URL, new Listener<Document>() {
 			@Override
 			public void onResponse(final Document doc) {
-				eiList = parseDocument(doc);
-				if (null != eiList && eiList.isEmpty()) {
+				try {
+					eiList = parseDocument(doc);
+				} catch (Exception e) {
 					mHandler.post(new Runnable() {
 						public void run() {
-							context.showToast("未获取到新数据");
+							context.showToast("获取数据失败");
 						}
 					});
-					return;
 				}
 				context.runOnUiThread(new Runnable() {
 					public void run() {
@@ -115,7 +121,7 @@ public class EmployFragment extends BaseTabFragment {
 			@Override
 			public void onErrorResponse(VolleyError error) {
 				if (eiList.isEmpty())
-					if (null == errorView) 
+					if (null == errorView)
 						errorView = mErrorViewStub.inflate();
 					else
 						mErrorViewStub.setVisibility(View.VISIBLE);
@@ -134,8 +140,9 @@ public class EmployFragment extends BaseTabFragment {
 	 * @author (ljh) @date 2015-5-7 上午11:11:57
 	 * @param doc
 	 * @return List<EmploymentItem>
+	 * @throws Exception
 	 */
-	private List<EmploymentItem> parseDocument(Document doc) {
+	private List<EmploymentItem> parseDocument(Document doc) throws Exception {
 		List<EmploymentItem> itemList = new ArrayList<EmploymentItem>();
 		try {
 			Elements trs = doc.getElementsByTag("table").get(0).select("tbody").select("tr");
@@ -151,6 +158,7 @@ public class EmployFragment extends BaseTabFragment {
 				itemList.add(eItem);
 			}
 		} catch (Exception e) {
+			throw new Exception("parse error in the method 'parseDocument' ");
 			// Html页面结构变化可能导致解析NullPointException，这里catch一下不做处理
 			// TODO ...后期可以考虑添加日志记录，在收集异常日志的时候可以及时发现并修正错误
 		}

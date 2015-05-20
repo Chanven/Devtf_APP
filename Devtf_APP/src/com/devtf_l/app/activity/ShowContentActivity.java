@@ -13,6 +13,12 @@ import com.devtf_l.app.R;
 import com.devtf_l.app.base.BaseActivity;
 import com.devtf_l.app.entry.RssItem;
 
+/**
+ * @desc 
+ * @author ljh
+ * lijunhuayc@sina.com 2015-5-20
+ * @deprecated
+ */
 public class ShowContentActivity extends BaseActivity{
 	RssItem rssItem;
 	@InjectView(R.id.webView)

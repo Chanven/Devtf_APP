@@ -1,5 +1,6 @@
 package com.devtf_l.app.base;
 
+import com.devtf_l.app.R;
 import com.devtf_l.app.fragments.AndroidFragment;
 import com.devtf_l.app.fragments.ContactUsFragment;
 import com.devtf_l.app.fragments.EmployFragment;
@@ -13,6 +14,8 @@ public abstract class BaseTabFragment extends BaseFragment{
 	}
 	private static final String FRAGMENT_TYPE = "position";
 	private int position;
+	//固定至少3个颜色
+	protected final int[] ColorSchemeArr = new int[]{R.color.light_green_a200, R.color.lime_a400, R.color.light_green_a400};
 
 	public static BaseTabFragment newInstance(int mPosition) {
 		BaseTabFragment fragment = null;

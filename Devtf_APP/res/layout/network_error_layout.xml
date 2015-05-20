@@ -12,16 +12,16 @@
         android:layout_height="wrap_content"
         android:text="网 络 错 误"
         android:textColor="@color/red_500"
-        android:textSize="22sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/reloadBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dip"
+        android:layout_marginTop="18dip"
         android:padding="8dip"
         android:text="下拉重新加载"
-        android:textColor="@color/gray_medium"
-        android:textSize="18sp" />
+        android:textColor="@color/gray_light"
+        android:textSize="14sp" />
 
 </LinearLayout>

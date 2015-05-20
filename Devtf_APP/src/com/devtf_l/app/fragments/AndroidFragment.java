@@ -2,8 +2,7 @@ package com.devtf_l.app.fragments;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-
-import org.jsoup.nodes.Document;
+import java.util.List;
 
 import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,10 +13,10 @@ import android.view.View;
 import android.view.ViewStub;
 import butterknife.InjectView;
 
-import com.android.volley.VolleyError;
 import com.android.volley.Request.Method;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
 import com.devtf_l.app.R;
 import com.devtf_l.app.activity.WebViewActivity;
 import com.devtf_l.app.adapter.AndroidRecyclerAdapter;
@@ -25,7 +24,7 @@ import com.devtf_l.app.adapter.BaseRecyclerAdapter.OnItemClickListener;
 import com.devtf_l.app.adapter.BaseRecyclerAdapter.OnItemLongClickListener;
 import com.devtf_l.app.base.BaseTabFragment;
 import com.devtf_l.app.entry.RssItem;
-import com.devtf_l.app.net.HtmlDocumentRequest;
+import com.devtf_l.app.entry.RssParseUtils;
 import com.devtf_l.app.net.RSS2Request;
 import com.devtf_l.app.net.WebAPI;
 import com.devtf_l.app.util.Timber;
@@ -36,7 +35,7 @@ import com.github.johnpersano.supertoasts.SuperToast.Duration;
  * @author ljh
  * @date 2015-4-28 上午10:28:15
  */
-public class AndroidFragment extends BaseTabFragment{
+public class AndroidFragment extends BaseTabFragment {
 	@InjectView(R.id.swipeRefreshLayout)
 	SwipeRefreshLayout mSwipeRefreshLayout;
 	@InjectView(R.id.recyclerView)
@@ -46,8 +45,8 @@ public class AndroidFragment extends BaseTabFragment{
 	View errorView;
 	LinearLayoutManager linearLayoutManager;
 	AndroidRecyclerAdapter rvAdapter;
-	ArrayList<RssItem> rssList = new ArrayList<RssItem>();
-	
+	List<RssItem> rssList = new ArrayList<RssItem>();
+
 	@Override
 	public int getFragmentLayout() {
 		return R.layout.fragment_tab_android_layout;
@@ -75,48 +74,50 @@ public class AndroidFragment extends BaseTabFragment{
 				return true;
 			}
 		});
-		mSwipeRefreshLayout.setColorSchemeResources(R.color.light_green_a200, R.color.lime_a200, R.color.lime_a400, R.color.light_green_a400);
+		mSwipeRefreshLayout.setColorSchemeResources(ColorSchemeArr[0], ColorSchemeArr[1], ColorSchemeArr[2]);
 		mSwipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void onRefresh() {
 				getData();
 			}
 		});
+		mHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				mSwipeRefreshLayout.setRefreshing(true);
+				getData();
+			}
+		}, 800);
 	}
-	
-	/**
-	 * @Description: 获取数据
-	 * @author (ljh) @date 2015-4-30 下午5:17:46  
-	 * @return void
-	 */
+
 	@Override
 	public void getData() {
-		context.getRequestQueue().add(new RSS2Request(Method.GET, WebAPI.EMPLOY_URL, new Listener<InputStream>() {
+		context.getRequestQueue().add(new RSS2Request(Method.GET, WebAPI.RSS2_URL, new Listener<InputStream>() {
 			@Override
 			public void onResponse(final InputStream inputStream) {
-//				rssList = parseDocument(doc);
-//				if (null != rssList && rssList.isEmpty()) {
-//					mHandler.post(new Runnable() {
-//						public void run() {
-//							context.showToast("未获取到新数据");
-//						}
-//					});
-//					return;
-//				}
-//				context.runOnUiThread(new Runnable() {
-//					public void run() {
-//						rvAdapter.setItemList(rssList);
-//						rvAdapter.notifyDataSetChanged();
-//						mErrorViewStub.setVisibility(View.GONE);
-//						mSwipeRefreshLayout.setRefreshing(false);
-//					}
-//				});
+				try {
+					rssList = RssParseUtils.parseRss(inputStream);
+				} catch (Exception e) {
+					mHandler.post(new Runnable() {
+						public void run() {
+							context.showToast("获取数据失败");
+						}
+					});
+				}
+				context.runOnUiThread(new Runnable() {
+					public void run() {
+						rvAdapter.setItemList(rssList);
+						rvAdapter.notifyDataSetChanged();
+						mErrorViewStub.setVisibility(View.GONE);
+						mSwipeRefreshLayout.setRefreshing(false);
+					}
+				});
 			}
 		}, new ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
 				if (rssList.isEmpty())
-					if (null == errorView) 
+					if (null == errorView)
 						errorView = mErrorViewStub.inflate();
 					else
 						mErrorViewStub.setVisibility(View.VISIBLE);
@@ -128,8 +129,5 @@ public class AndroidFragment extends BaseTabFragment{
 
 	@Override
 	public void initPageViewListener() {
-
 	}
-	
-	
 }

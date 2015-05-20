@@ -48,4 +48,5 @@ public abstract class BaseRecyclerAdapter extends Adapter<ViewHolder> {
 	public interface OnItemLongClickListener {
 		boolean onItemLongClick(View view, int position);
 	}
+	
 }

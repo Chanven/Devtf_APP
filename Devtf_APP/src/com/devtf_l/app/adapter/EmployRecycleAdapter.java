@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,7 +29,7 @@ public class EmployRecycleAdapter extends BaseRecyclerAdapter {
 		rvHolder.menuIV.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//发送右键、详细信息
+				// 发送邮件、查看详细信息
 			}
 		});
 		EmploymentItem eItem = (EmploymentItem) itemList.get(position);
@@ -45,48 +44,22 @@ public class EmployRecycleAdapter extends BaseRecyclerAdapter {
 		return new RecyclerViewHolder(view, this.mOnItemClickListener, this.mOnItemLongClickListener);
 	}
 
-	static class RecyclerViewHolder extends ViewHolder implements OnClickListener, OnLongClickListener {
+	static class RecyclerViewHolder extends BaseViewHolder {
 		ImageView menuIV;
 		TextView companyName;
 		TextView jobName;
 		TextView postTemptTV;
-		OnItemClickListener mOnItemClickListener;
-		OnItemLongClickListener mOnItemLongClickListener;
 
-		public RecyclerViewHolder(View view) {
-			super(view);
+		public RecyclerViewHolder(View view, OnItemClickListener mOnItemClickListener, OnItemLongClickListener mOnItemLongClickListener) {
+			super(view, mOnItemClickListener, mOnItemLongClickListener);
+		}
+
+		@Override
+		protected void findView(View view) {
 			menuIV = (ImageView) view.findViewById(R.id.menuIV);
 			companyName = (TextView) view.findViewById(R.id.companyNameTV);
 			jobName = (TextView) view.findViewById(R.id.jobNameTV);
 			postTemptTV = (TextView) view.findViewById(R.id.postTemptTV);
-		}
-
-		public RecyclerViewHolder(View view, OnItemClickListener mItemClickListener, OnItemLongClickListener mItemLongClickListener) {
-			this(view);
-			this.mOnItemClickListener = mItemClickListener;
-			this.mOnItemLongClickListener = mItemLongClickListener;
-			view.setOnClickListener(this);
-			view.setOnLongClickListener(this);
-		}
-
-		public RecyclerViewHolder(View view, OnItemClickListener mItemClickListener) {
-			this(view);
-			this.mOnItemClickListener = mItemClickListener;
-		}
-
-		@Override
-		public void onClick(View view) {
-			if (null != mOnItemClickListener) {
-				mOnItemClickListener.onItemClick(view, getPosition());
-			}
-		}
-
-		@Override
-		public boolean onLongClick(View view) {
-			if (null != mOnItemLongClickListener) {
-				mOnItemLongClickListener.onItemLongClick(view, getPosition());
-			}
-			return true;
 		}
 	}
 }
