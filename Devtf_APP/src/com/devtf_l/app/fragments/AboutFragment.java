@@ -1,6 +1,7 @@
 package com.devtf_l.app.fragments;
 
 import android.os.Handler;
+import android.widget.TextView;
 import butterknife.InjectView;
 
 import com.devtf_l.app.R;
@@ -14,7 +15,7 @@ import com.devtf_l.app.views.FontsTextView;
  */
 public class AboutFragment extends BaseFragment {
 	@InjectView(R.id.labelTV)
-	FontsTextView labelTV;
+	TextView labelTV;
 	@InjectView(R.id.descFontsTV)
 	FontsTextView descFontsTV;
 	@InjectView(R.id.thanksFontsTV)

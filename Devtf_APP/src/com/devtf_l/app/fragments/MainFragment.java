@@ -1,6 +1,7 @@
 package com.devtf_l.app.fragments;
 
 import android.os.Handler;
+import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import butterknife.InjectView;
 
@@ -8,9 +9,6 @@ import com.devtf_l.app.R;
 import com.devtf_l.app.adapter.MainPagerAdapter;
 import com.devtf_l.app.base.BaseFragment;
 import com.devtf_l.app.views.PagerSlidingTabStrip;
-import com.devtf_l.app.views.jazzyviewpager.JazzyViewPager;
-import com.devtf_l.app.views.jazzyviewpager.JazzyViewPager.SlideCallback;
-import com.devtf_l.app.views.jazzyviewpager.JazzyViewPager.TransitionEffect;
 
 /**
  * @Desc: 主Fragment, 包含多个tab页面
@@ -21,7 +19,7 @@ public class MainFragment extends BaseFragment {
 	@InjectView(R.id.mSlidingTabStrip)
 	PagerSlidingTabStrip mSlidingTabStrip;
 	@InjectView(R.id.mViewPager)
-	JazzyViewPager mViewPager;
+	ViewPager mViewPager;
 	private String[] tabTitles = {"Android","iOS","招聘信息","加入我们"};
 	private MainPagerAdapter mPagerAdapter;
 	Handler mHandler = new Handler();
@@ -36,19 +34,10 @@ public class MainFragment extends BaseFragment {
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				mPagerAdapter = new MainPagerAdapter(mViewPager, getChildFragmentManager(), tabTitles);
+				mPagerAdapter = new MainPagerAdapter(getChildFragmentManager(), tabTitles);
 				mViewPager.setAdapter(mPagerAdapter);
 				mViewPager.setOffscreenPageLimit(4);
 //				mViewPager.setCurrentItem(0);
-				mViewPager.setFadeEnabled(true);
-				mViewPager.setTransitionEffect(TransitionEffect.Stack);
-				mViewPager.setSlideCallBack(new SlideCallback() {
-					@Override
-					public void callBack(int position, float positionOffset) {
-//						System.out.println(""+position+"--"+positionOffset);
-						//TODO ...考虑在这里做tab 滑动动效
-					}
-				});
 				mSlidingTabStrip.setOnPageChangeListener(new OnPageChangeListener() {
 					@Override
 					public void onPageSelected(int position) {
@@ -76,7 +65,7 @@ public class MainFragment extends BaseFragment {
 		super.onHiddenChanged(hidden);
 	}
 	
-	public JazzyViewPager getViewPager() {
+	public ViewPager getViewPager() {
 		return mViewPager;
 	}
 	

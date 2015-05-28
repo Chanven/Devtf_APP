@@ -2,27 +2,24 @@ package com.devtf_l.app.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.util.SparseArrayCompat;
 import android.view.ViewGroup;
 
 import com.devtf_l.app.base.BaseTabFragment;
-import com.devtf_l.app.views.jazzyviewpager.JazzyViewPager;
 
 /**
  * @Desc: MainFragment viewpager adapter
  * @author ljh
  * @date 2015-4-29 下午2:53:31
  */
-public class MainPagerAdapter extends FragmentPagerAdapter {
+public class MainPagerAdapter extends FragmentStatePagerAdapter {
 	private SparseArrayCompat<BaseTabFragment> mTabFragmentArray;
 	private String[] mTitles;
-	private JazzyViewPager mViewPager;
 
-	public MainPagerAdapter(JazzyViewPager mViewPager, FragmentManager fm, String[] mTitles) {
+	public MainPagerAdapter(FragmentManager fm, String[] mTitles) {
 		super(fm);
 		this.mTitles = mTitles;
-		this.mViewPager = mViewPager;
 		mTabFragmentArray = new SparseArrayCompat<BaseTabFragment>();
 	}
 
@@ -37,18 +34,22 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
 	}
 
 	/**
-	 * <p>Title: instantiateItem</p> 
-	 * <p>Description: 重写此方法,否则JazzyViewpager无动画效果</p>
+	 * <p>
+	 * Title: instantiateItem
+	 * </p>
+	 * <p>
+	 * Description:
+	 * </p>
+	 * 
 	 * @param container
 	 * @param position
 	 * @return
-	 * @see com.devtf_l.app.adapter.FragmentPagerAdapter#instantiateItem(android.view.ViewGroup, int)
+	 * @see com.devtf_l.app.adapter.FragmentPagerAdapter#instantiateItem(android.view.ViewGroup,
+	 *      int)
 	 */
 	@Override
 	public Object instantiateItem(ViewGroup container, final int position) {
-		Object obj = super.instantiateItem(container, position);
-		mViewPager.setObjectForPosition(obj, position);
-		return obj;
+		return super.instantiateItem(container, position);
 	}
 
 	@Override
@@ -60,7 +61,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
 		}
 		return mFragment;
 	}
-	
+
 	public SparseArrayCompat<BaseTabFragment> getTabFragmentArray() {
 		return mTabFragmentArray;
 	}

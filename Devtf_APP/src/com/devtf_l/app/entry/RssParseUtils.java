@@ -14,8 +14,7 @@ import com.devtf_l.app.BuildConfig;
 
 /**
  * @desc RSS2解析工具（网络请求拿到RSS2数据流后通过parseRss方法解析得到结果集）
- * @author ljh lijunhuayc@sina.com 2015-5-20
-// * @deprecated 废弃，RSS2资源只有10条数据不全
+ * @author ljh lijunhuayc@sina.com 2015-5-20 // * @deprecated 废弃，RSS2资源只有10条数据不全
  */
 public class RssParseUtils {
 	static RssHead rssHead = null;
@@ -64,8 +63,8 @@ public class RssParseUtils {
 			eventType = xpp.next();
 		}
 		if (BuildConfig.DEBUG) {
-//			Timber.d("RssHead信息：" + rssHead.toString() + "\n");
-//			Timber.d("RssHead item0：" + rssList.get(0).toString());
+			// Timber.d("RssHead信息：" + rssHead.toString() + "\n");
+			// Timber.d("RssHead item0：" + rssList.get(0).toString());
 		}
 		return rssList;
 	}
@@ -84,38 +83,42 @@ public class RssParseUtils {
 		 */
 		if ("title".equals(tagName)) {
 			xpp.next();
-			rssItem.setTitle(xpp.getText());
+			rssItem.setTitle(notNullString(xpp.getText()));
 		} else if ("link".equals(tagName)) {
 			xpp.next();
-			rssItem.setLink(xpp.getText());
+			rssItem.setLink(notNullString(xpp.getText()));
 		} else if ("comments".equals(tagName) && null == xpp.getPrefix()) {
 			xpp.next();
-			rssItem.setComments(xpp.getText());
+			rssItem.setComments(notNullString(xpp.getText()));
 		} else if ("pubDate".equals(tagName)) {
 			xpp.next();
-			rssItem.setPubDate(xpp.getText());
+			rssItem.setPubDate(notNullString(xpp.getText()));
 		} else if ("creator".equals(tagName) && "dc".equals(xpp.getPrefix())) {
 			xpp.next();
-			rssItem.setDc_creator(xpp.getText());
+			rssItem.setDc_creator(notNullString(xpp.getText()));
 		} else if ("category".equals(tagName)) {
 			xpp.next();
-			rssItem.setCategory(xpp.getText());
+			rssItem.setCategory(notNullString(xpp.getText()));
 		} else if ("guid".equals(tagName)) {
 			xpp.next();
-			rssItem.setGuid(xpp.getText());
+			rssItem.setGuid(notNullString(xpp.getText()));
 		} else if ("description".equals(tagName)) {
 			xpp.next();
-			rssItem.setDescription(xpp.getText());
+			rssItem.setDescription(notNullString(xpp.getText()));
 		} else if ("encoded".equals(tagName) && "content".equals(xpp.getPrefix())) {
 			xpp.next();
-			rssItem.setContent_encoded(xpp.getText());
+			rssItem.setContent_encoded(notNullString(xpp.getText()));
 		} else if ("commentRss".equals(tagName) && "wfw".equals(xpp.getPrefix())) {
 			xpp.next();
-			rssItem.setWfw_commentRss(xpp.getText());
+			rssItem.setWfw_commentRss(notNullString(xpp.getText()));
 		} else if ("comments".equals(tagName) && "slash".equals(xpp.getPrefix())) {
 			xpp.next();
-			rssItem.setSlash_comments(xpp.getText());
+			rssItem.setSlash_comments(notNullString(xpp.getText()));
 		}
+	}
+
+	private static String notNullString(String src) {
+		return null == src ? "" : src;
 	}
 
 	/**
@@ -132,31 +135,31 @@ public class RssParseUtils {
 		 */
 		if ("title".equals(tagName)) {
 			xpp.next();
-			rssHead.setTitle(xpp.getText());
+			rssHead.setTitle(notNullString(xpp.getText()));
 		} else if ("link".equals(tagName) && null == xpp.getPrefix()) {
 			// xpp.getNamespace().isEmpty()
 			xpp.next();
-			rssHead.setLink(xpp.getText());
+			rssHead.setLink(notNullString(xpp.getText()));
 		} else if ("description".equals(tagName)) {
 			xpp.next();
-			rssHead.setDescription(xpp.getText());
+			rssHead.setDescription(notNullString(xpp.getText()));
 		} else if ("lastBuildDate".equals(tagName)) {
 			xpp.next();
-			rssHead.setLastBuildDate(xpp.getText());
+			rssHead.setLastBuildDate(notNullString(xpp.getText()));
 		} else if ("language".equals(tagName)) {
 			xpp.next();
-			rssHead.setLanguage(xpp.getText());
+			rssHead.setLanguage(notNullString(xpp.getText()));
 		}
 		// **以下属性基本不使用，不做解析，提供解析速度
 		else if ("updatePeriod".equals(tagName) && "sy".equals(xpp.getPrefix())) {
 			xpp.next();
-			rssHead.setSy_updatePeriod(xpp.getText());
+			rssHead.setSy_updatePeriod(notNullString(xpp.getText()));
 		} else if ("updateFrequency".equals(tagName) && "sy".equals(xpp.getPrefix())) {
 			xpp.next();
-			rssHead.setSy_updateFrequency(xpp.getText());
+			rssHead.setSy_updateFrequency(notNullString(xpp.getText()));
 		} else if ("generator".equals(tagName)) {
 			xpp.next();
-			rssHead.setGenerator(xpp.getText());
+			rssHead.setGenerator(notNullString(xpp.getText()));
 		}
 		// */
 	}
