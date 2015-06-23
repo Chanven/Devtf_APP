@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewStub;
 import butterknife.InjectView;
 
+import com.android.volley.Request;
 import com.android.volley.Request.Method;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
@@ -81,6 +82,11 @@ public class AndroidFragment extends BaseTabFragment {
 				getData();
 			}
 		});
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
@@ -89,10 +95,10 @@ public class AndroidFragment extends BaseTabFragment {
 			}
 		}, 800);
 	}
-
+	
 	@Override
 	public void getData() {
-		context.getRequestQueue().add(new RSS2Request(Method.GET, WebAPI.RSS2_URL, new Listener<InputStream>() {
+		Request<?> request = new RSS2Request(Method.GET, WebAPI.RSS2_URL, new Listener<InputStream>() {
 			@Override
 			public void onResponse(final InputStream inputStream) {
 				try {
@@ -124,10 +130,18 @@ public class AndroidFragment extends BaseTabFragment {
 				mSwipeRefreshLayout.setRefreshing(false);
 				context.showToast("加载失败", Duration.VERY_SHORT);
 			}
-		}));
+		});
+		request.setTag("android");
+		context.getRequestQueue().add(request);
 	}
 
 	@Override
 	public void initPageViewListener() {
 	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+	}
+	
 }

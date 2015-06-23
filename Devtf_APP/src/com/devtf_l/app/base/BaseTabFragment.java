@@ -1,5 +1,7 @@
 package com.devtf_l.app.base;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue.RequestFilter;
 import com.devtf_l.app.R;
 import com.devtf_l.app.fragments.AndroidFragment;
 import com.devtf_l.app.fragments.ContactUsFragment;
@@ -9,6 +11,7 @@ import com.devtf_l.app.fragments.IOSFragment;
 import android.os.Bundle;
 
 public abstract class BaseTabFragment extends BaseFragment{
+	private static final String REQUEST_TAG = "tab";
 	enum Type{
 		ANDROID, IOS, EMPLOY, CONTACT_US
 	}
@@ -55,5 +58,19 @@ public abstract class BaseTabFragment extends BaseFragment{
 	 * @return void
 	 */
 	public abstract void getData();
+	
+	@Override
+	public void onPause() {
+		RequestFilter rf = new RequestFilter() {
+			@Override
+			public boolean apply(Request<?> request) {
+				if(REQUEST_TAG.equals(request.getTag()))
+					return true;
+				return false;
+			}
+		};
+		context.getRequestQueue().cancelAll(rf);
+		super.onPause();
+	}
 	
 }
